@@ -1,20 +1,42 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Grace Sports
 
-# Run and deploy your AI Studio app
+A minimal React + Vite storefront for Grace Sports, a table tennis equipment brand focused on premium tables, balls, accessories, arena gear, and sportswear.
 
-This contains everything you need to run your app locally.
+## What this project does
 
-View your app in AI Studio: https://ai.studio/apps/4f4cf53f-3c0e-4255-a3ac-520fc0f6efe9
+- Showcases product categories and featured equipment
+- Lets visitors browse and search the product catalogue
+- Opens product detail modals with specifications and pricing
+- Supports inquiry tracking from the UI
+- Connects inquiries to WhatsApp for direct sales contact
+- Displays company information, gallery, testimonials, and policies
 
-## Run Locally
+## Tech stack
 
-**Prerequisites:**  Node.js
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS
+- lucide-react
 
+## Run locally
+
+Prerequisites: Node.js
 
 1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+   npm install
+2. Start the app:
+   npm run dev
+3. Open the site in your browser:
+   http://localhost:3000
+
+## Production build
+
+npm run build
+
+## Project structure
+
+- src/App.tsx — main storefront layout and inquiry state
+- src/components — page sections and UI components
+- src/data — product and category data
+- src/utils — utility helpers such as WhatsApp link generation
