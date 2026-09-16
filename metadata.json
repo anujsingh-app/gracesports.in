@@ -1,0 +1,6 @@
+{
+  "name": "Grace Sports",
+  "description": "Official product catalogue and direct inquiry portal for Grace Sports - India's fastest growing table tennis brand, manufacturer and exporter.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

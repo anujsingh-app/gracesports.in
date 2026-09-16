@@ -1,0 +1,227 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #07090E;
+    color: #F1F5F9;
+    overflow-x: hidden;
+  }
+
+  select {
+    color-scheme: dark;
+  }
+
+  select option {
+    background-color: #0D111D;
+    color: #F1F5F9;
+  }
+
+  /* Prevent background scroll when modal is active */
+  body.modal-open {
+    overflow: hidden;
+    touch-action: none;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Teko', 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: 0.03em;
+  }
+
+  /* Enterprise-grade focus ring defaults */
+  :focus-visible {
+    outline: 2px solid rgba(229, 32, 44, 0.6);
+    outline-offset: 2px;
+  }
+}
+
+/* Liquid Glass Theme Utilities */
+.liquid-glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(7, 9, 14, 0.82) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+}
+
+.liquid-glass-red {
+  background: linear-gradient(135deg, rgba(229, 32, 44, 0.12) 0%, rgba(20, 24, 33, 0.6) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(229, 32, 44, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(229, 32, 44, 0.18), inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+}
+
+.liquid-glass-card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.015) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass-card:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(229, 32, 44, 0.05) 100%);
+  border-color: rgba(229, 32, 44, 0.4);
+  box-shadow: 0 20px 40px -15px rgba(229, 32, 44, 0.25), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+.liquid-glow {
+  box-shadow: 0 0 35px -5px rgba(229, 32, 44, 0.4);
+}
+
+.liquid-border {
+  position: relative;
+}
+
+.liquid-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(229, 32, 44, 0.4), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Hide scrollbar — used by horizontal category pills & thumbnail galleries */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom Sports Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080B11;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #232938;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E5202C;
+}
+
+/* Fade-in animation — used by search dropdown, modals, lightbox, mobile menu */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+/* Slide-in-right animation — used by drawers */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes shrinkWidth {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.animate-shrinkWidth {
+  animation: shrinkWidth 3.5s linear forwards;
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 12s linear infinite;
+}
+
+/* Liquid Glass Shimmer Wave */
+@keyframes shimmerWave {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.05) 20%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.05) 80%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmerWave 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  content: '';
+  pointer-events: none;
+}
+
+/* Image hover scale — Tailwind v4 doesn't have scale-108, define it explicitly */
+.hover-scale-img {
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .hover-scale-img {
+  transform: scale(1.08);
+}
