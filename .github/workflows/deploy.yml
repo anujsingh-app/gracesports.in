@@ -34,10 +34,16 @@ jobs:
       - name: 🏗️ Build Production Bundle
         run: npm run build
 
+      - name: 🧹 Clean & Normalize FTP Server Hostname
+        run: |
+          RAW_SERVER="${{ secrets.FTP_SERVER }}"
+          CLEAN_SERVER=$(echo "$RAW_SERVER" | sed -E 's|^[a-zA-Z]+://||' | sed 's|/.*||' | tr -d '[:space:]')
+          echo "SERVER=$CLEAN_SERVER" >> $GITHUB_ENV
+
       - name: 🚀 Sync to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          server: ${{ env.SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
