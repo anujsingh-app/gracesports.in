@@ -51,6 +51,16 @@ export const HomeView: React.FC<HomeViewProps> = ({
             {CATEGORIES.map((cat, idx) => (
               <FadeIn key={cat.id} delay={(idx % 6) * 0.06} direction="up" distance={16}>
                 <div
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      onSelectCategory(cat.id);
+                      setActiveTab('catalogue');
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                  }}
                   onClick={() => {
                     onSelectCategory(cat.id);
                     setActiveTab('catalogue');

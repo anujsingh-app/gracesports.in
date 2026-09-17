@@ -1,4 +1,11 @@
-export type CategoryId = 'tables' | 'balls' | 'accessories' | 'arena' | 'sportswear' | 'flooring';
+export type CategoryId = 'all' | 'tables' | 'balls' | 'accessories' | 'arena' | 'sportswear' | 'flooring';
+
+export interface ProductVariation {
+  id: string;
+  name: string;
+  price: number;
+  originalPrice?: number;
+}
 
 export interface Product {
   id: string;
@@ -22,6 +29,7 @@ export interface Product {
   dimensions?: string;
   weight?: string;
   isPopular?: boolean;
+  variations?: ProductVariation[];
 }
 
 export interface Category {
@@ -55,6 +63,7 @@ export interface InquiryItem {
   product: Product;
   quantity: number;
   notes?: string;
+  variation?: ProductVariation;
 }
 
 export type ActiveTab = 'home' | 'catalogue' | 'about' | 'gallery' | 'contact' | 'policies';

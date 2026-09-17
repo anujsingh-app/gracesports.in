@@ -17,8 +17,10 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({ size = 'md', showSubtitle 
         isSmall ? 'w-8 h-8 sm:w-9 sm:h-9 p-1' : isLarge ? 'w-12 h-12 sm:w-14 sm:h-14 p-1.5' : 'w-10 h-10 sm:w-11 sm:h-11 p-1'
       } rounded-xl bg-white shadow-[0_0_20px_rgba(229,32,44,0.25)] border border-white/20 overflow-hidden`}>
         <img
-          src="/images/gslogo/logo.png"
+          src="/images/gslogo/logo.webp"
           alt="Grace Sports Logo"
+          width={48}
+          height={48}
           className="w-full h-full object-contain"
         />
       </div>

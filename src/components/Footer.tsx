@@ -58,7 +58,7 @@ export const Footer: React.FC<FooterProps> = ({
                     setActiveTab('home');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="py-1 hover:text-red-400 transition-colors cursor-pointer inline-flex items-center"
+                  className="py-1 hover:text-red-400 transition-colors inline-flex items-center"
                 >
                   Home
                 </button>
@@ -69,7 +69,7 @@ export const Footer: React.FC<FooterProps> = ({
                     setActiveTab('catalogue');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="py-1 hover:text-red-400 transition-colors cursor-pointer inline-flex items-center"
+                  className="py-1 hover:text-red-400 transition-colors inline-flex items-center"
                 >
                   Product Catalogue
                 </button>
@@ -80,7 +80,7 @@ export const Footer: React.FC<FooterProps> = ({
                     setActiveTab('about');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="py-1 hover:text-red-400 transition-colors cursor-pointer inline-flex items-center"
+                  className="py-1 hover:text-red-400 transition-colors inline-flex items-center"
                 >
                   About Vardhan Mashi
                 </button>
@@ -91,7 +91,7 @@ export const Footer: React.FC<FooterProps> = ({
                     setActiveTab('gallery');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="py-1 hover:text-red-400 transition-colors cursor-pointer inline-flex items-center"
+                  className="py-1 hover:text-red-400 transition-colors inline-flex items-center"
                 >
                   Gallery
                 </button>
@@ -102,7 +102,7 @@ export const Footer: React.FC<FooterProps> = ({
                     setActiveTab('contact');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="py-1 hover:text-red-400 transition-colors cursor-pointer inline-flex items-center"
+                  className="py-1 hover:text-red-400 transition-colors inline-flex items-center"
                 >
                   Contact
                 </button>
@@ -119,7 +119,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={() => onOpenPolicy('privacy')}
-                  className="py-1 hover:text-red-400 transition-colors cursor-pointer flex items-center gap-2"
+                  className="py-1 hover:text-red-400 transition-colors flex items-center gap-2"
                 >
                   <Lock className="w-3.5 h-3.5 text-slate-500 shrink-0" />
                   <span>Privacy Policy</span>
@@ -128,7 +128,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={() => onOpenPolicy('refund')}
-                  className="py-1 hover:text-red-400 transition-colors cursor-pointer flex items-center gap-2"
+                  className="py-1 hover:text-red-400 transition-colors flex items-center gap-2"
                 >
                   <RotateCcw className="w-3.5 h-3.5 text-slate-500 shrink-0" />
                   <span>Refund & Returns</span>
@@ -137,7 +137,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={() => onOpenPolicy('terms')}
-                  className="py-1 hover:text-red-400 transition-colors cursor-pointer flex items-center gap-2"
+                  className="py-1 hover:text-red-400 transition-colors flex items-center gap-2"
                 >
                   <FileText className="w-3.5 h-3.5 text-slate-500 shrink-0" />
                   <span>Terms & Conditions</span>

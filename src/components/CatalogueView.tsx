@@ -49,7 +49,7 @@ export const CatalogueView: React.FC<CatalogueViewProps> = ({
   const filteredProducts = useMemo(() => {
     return PRODUCTS.filter((product) => {
       // Category match
-      if (product.category !== selectedCategory) {
+      if (selectedCategory !== 'all' && product.category !== selectedCategory) {
         return false;
       }
       // Search match
@@ -90,13 +90,13 @@ export const CatalogueView: React.FC<CatalogueViewProps> = ({
 
             <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
               <a
-                href="/images/products/category-all.jpg"
+                href="/file assets/GS-APPAREL Catalogue.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-slate-200 border border-white/[0.08] text-xs font-semibold transition-all min-h-[44px] text-center"
               >
                 <Download className="w-4 h-4 text-red-400 shrink-0" />
-                <span><span className="hidden sm:inline">Download </span>2024-25 PDF</span>
+                <span>Download PDF</span>
               </a>
 
               <a
@@ -114,13 +114,25 @@ export const CatalogueView: React.FC<CatalogueViewProps> = ({
 
         {/* Category Horizontal Pills with edge-to-edge mobile scroll */}
         <div className="flex items-center gap-2 overflow-x-auto py-4 sm:py-6 no-scrollbar border-b border-white/[0.06] -mx-4 px-4 sm:mx-0 sm:px-0">
+          {/* All Products pill */}
+          <button
+            onClick={() => onSelectCategory('all')}
+            className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold tracking-wide whitespace-nowrap transition-all min-h-[40px] shrink-0 ${
+              selectedCategory === 'all'
+                ? 'bg-red-600 text-white shadow-[0_0_15px_rgba(229,32,44,0.4)] border border-red-500'
+                : 'bg-white/[0.03] text-slate-300 hover:text-white hover:bg-white/[0.06] border border-white/[0.06]'
+            }`}
+          >
+            <span>All Products</span>
+          </button>
+
           {CATEGORIES.map((category) => {
             const isSelected = selectedCategory === category.id;
             return (
               <button
                 key={category.id}
                 onClick={() => onSelectCategory(category.id)}
-                className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold tracking-wide whitespace-nowrap transition-all cursor-pointer min-h-[40px] shrink-0 ${
+                className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold tracking-wide whitespace-nowrap transition-all min-h-[40px] shrink-0 ${
                   isSelected
                     ? 'bg-red-600 text-white shadow-[0_0_15px_rgba(229,32,44,0.4)] border border-red-500'
                     : 'bg-white/[0.03] text-slate-300 hover:text-white hover:bg-white/[0.06] border border-white/[0.06]'

@@ -29,8 +29,11 @@ export const TestimonialsSection: React.FC = () => {
   const current = TESTIMONIALS[currentIndex];
 
   // Get adjacent testimonials for the mini-preview cards
-  const getAdjacentIndex = (offset: number) =>
-    (currentIndex + offset + TESTIMONIALS.length) % TESTIMONIALS.length;
+  const getAdjacentIndex = useCallback(
+    (offset: number) =>
+      (currentIndex + offset + TESTIMONIALS.length) % TESTIMONIALS.length,
+    [currentIndex]
+  );
 
   const prevTestimonial = TESTIMONIALS[getAdjacentIndex(-1)];
   const nextTestimonial = TESTIMONIALS[getAdjacentIndex(1)];
@@ -270,8 +273,10 @@ export const TestimonialsSection: React.FC = () => {
             <div className="lg:col-span-4 flex flex-row lg:flex-col gap-3 sm:gap-4">
               {/* Previous testimonial peek */}
               <button
+                type="button"
                 onClick={prev}
-                className="flex-1 group relative rounded-2xl p-[1px] cursor-pointer text-left overflow-hidden transition-all duration-300"
+                aria-label={`Previous testimonial by ${prevTestimonial.name}`}
+                className="flex-1 group relative rounded-2xl p-[1px] text-left overflow-hidden transition-all duration-300"
                 style={{
                   background: 'linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02))',
                 }}
@@ -303,18 +308,20 @@ export const TestimonialsSection: React.FC = () => {
                         src={prevTestimonial.avatar}
                         alt={prevTestimonial.name}
                         className="w-full h-full object-cover"
+                        width={48}
+                        height={48}
                       />
                     </div>
                     <div className="min-w-0">
-                      <h4 className="font-display text-sm sm:text-base font-bold text-white/70 group-hover:text-white transition-colors truncate">
+                      <span className="block font-display text-sm sm:text-base font-bold text-white/70 group-hover:text-white transition-colors truncate">
                         {prevTestimonial.name}
-                      </h4>
-                      <p className="text-[10px] text-red-400/60 group-hover:text-red-400 transition-colors truncate">
+                      </span>
+                      <span className="block text-[10px] text-red-400/60 group-hover:text-red-400 transition-colors truncate">
                         {prevTestimonial.academy}
-                      </p>
-                      <p className="text-[11px] text-slate-500 mt-1.5 line-clamp-2 leading-relaxed">
+                      </span>
+                      <span className="block text-[11px] text-slate-500 mt-1.5 line-clamp-2 leading-relaxed">
                         "{prevTestimonial.content.slice(0, 80)}..."
-                      </p>
+                      </span>
                     </div>
                   </div>
 
@@ -327,8 +334,10 @@ export const TestimonialsSection: React.FC = () => {
 
               {/* Next testimonial peek */}
               <button
+                type="button"
                 onClick={next}
-                className="flex-1 group relative rounded-2xl p-[1px] cursor-pointer text-left overflow-hidden transition-all duration-300"
+                aria-label={`Next testimonial by ${nextTestimonial.name}`}
+                className="flex-1 group relative rounded-2xl p-[1px] text-left overflow-hidden transition-all duration-300"
                 style={{
                   background: 'linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02))',
                 }}
@@ -360,18 +369,20 @@ export const TestimonialsSection: React.FC = () => {
                         src={nextTestimonial.avatar}
                         alt={nextTestimonial.name}
                         className="w-full h-full object-cover"
+                        width={48}
+                        height={48}
                       />
                     </div>
                     <div className="min-w-0">
-                      <h4 className="font-display text-sm sm:text-base font-bold text-white/70 group-hover:text-white transition-colors truncate">
+                      <span className="block font-display text-sm sm:text-base font-bold text-white/70 group-hover:text-white transition-colors truncate">
                         {nextTestimonial.name}
-                      </h4>
-                      <p className="text-[10px] text-red-400/60 group-hover:text-red-400 transition-colors truncate">
+                      </span>
+                      <span className="block text-[10px] text-red-400/60 group-hover:text-red-400 transition-colors truncate">
                         {nextTestimonial.academy}
-                      </p>
-                      <p className="text-[11px] text-slate-500 mt-1.5 line-clamp-2 leading-relaxed">
+                      </span>
+                      <span className="block text-[11px] text-slate-500 mt-1.5 line-clamp-2 leading-relaxed">
                         "{nextTestimonial.content.slice(0, 80)}..."
-                      </p>
+                      </span>
                     </div>
                   </div>
 

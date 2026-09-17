@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Header } from './components/Header';
 import { HomeView } from './components/HomeView';
 import { CatalogueView } from './components/CatalogueView';
@@ -9,7 +9,8 @@ import { ProductModal } from './components/ProductModal';
 import { InquiryDrawer } from './components/InquiryDrawer';
 import { PolicyModal } from './components/PolicyModal';
 import { Footer } from './components/Footer';
-import { ActiveTab, CategoryId, InquiryItem, Product } from './types';
+import { ActiveTab, CategoryId, InquiryItem, Product, ProductVariation } from './types';
+import { PRODUCTS } from './data/products';
 
 const VALID_TABS: ActiveTab[] = ['home', 'catalogue', 'about', 'gallery', 'contact', 'policies'];
 
@@ -44,11 +45,11 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState<CategoryId>(() => {
     try {
       const saved = localStorage.getItem('grace_sports_category') as CategoryId;
-      if (saved && ['tables', 'balls', 'accessories', 'arena', 'sportswear', 'flooring'].includes(saved)) {
+      if (saved && ['all', 'tables', 'balls', 'accessories', 'arena', 'sportswear', 'flooring'].includes(saved)) {
         return saved;
       }
     } catch {}
-    return 'tables';
+    return 'all';
   });
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -114,43 +115,74 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [activeTab]);
 
-  const inquiryProductIds = new Set(inquiryItems.map((item) => item.product.id));
+  const inquiryProductIds = useMemo(
+    () => new Set(inquiryItems.map((item) => item.product.id)),
+    [inquiryItems]
+  );
 
-  const handleAddToInquiry = (product: Product, quantity = 1) => {
-    setInquiryItems((prev) => {
-      const existing = prev.find((item) => item.product.id === product.id);
-      if (existing) {
-        return prev.map((item) =>
-          item.product.id === product.id
-            ? { ...item, quantity: item.quantity + quantity }
-            : item
-        );
-      }
-      return [...prev, { product, quantity }];
-    });
-  };
+  const getItemKey = (item: InquiryItem): string =>
+    item.variation ? `${item.product.id}-${item.variation.id}` : item.product.id;
 
-  const handleUpdateQuantity = (productId: string, quantity: number) => {
+  const handleRemoveItem = useCallback((itemKey: string) => {
+    setInquiryItems((prev) =>
+      prev.filter((item) => getItemKey(item) !== itemKey)
+    );
+  }, []);
+
+  const handleUpdateQuantity = useCallback((itemKey: string, quantity: number) => {
     if (quantity <= 0) {
-      handleRemoveItem(productId);
+      handleRemoveItem(itemKey);
       return;
     }
     setInquiryItems((prev) =>
       prev.map((item) =>
-        item.product.id === productId ? { ...item, quantity } : item
+        getItemKey(item) === itemKey ? { ...item, quantity } : item
       )
     );
-  };
+  }, [handleRemoveItem]);
 
-  const handleRemoveItem = (productId: string) => {
-    setInquiryItems((prev) =>
-      prev.filter((item) => item.product.id !== productId)
-    );
-  };
+  const handleAddToInquiry = useCallback((product: Product, quantity = 1, variation?: ProductVariation) => {
+    const selectedVariation = variation || (product.variations && product.variations.length > 0 ? product.variations[0] : undefined);
+    const keyToMatch = selectedVariation ? `${product.id}-${selectedVariation.id}` : product.id;
 
-  const handleClearAll = () => {
+    setInquiryItems((prev) => {
+      const existing = prev.find((item) => getItemKey(item) === keyToMatch);
+      if (existing) {
+        return prev.map((item) =>
+          getItemKey(item) === keyToMatch
+            ? { ...item, quantity: item.quantity + quantity }
+            : item
+        );
+      }
+      return [...prev, { product, quantity, variation: selectedVariation }];
+    });
+  }, []);
+
+  const handleClearAll = useCallback(() => {
     setInquiryItems([]);
-  };
+  }, []);
+
+  const handleNextProduct = useCallback(() => {
+    setSelectedProduct((current) => {
+      if (!current) return null;
+      const idx = PRODUCTS.findIndex((p) => p.id === current.id);
+      if (idx !== -1) {
+        return PRODUCTS[(idx + 1) % PRODUCTS.length];
+      }
+      return current;
+    });
+  }, []);
+
+  const handlePrevProduct = useCallback(() => {
+    setSelectedProduct((current) => {
+      if (!current) return null;
+      const idx = PRODUCTS.findIndex((p) => p.id === current.id);
+      if (idx !== -1) {
+        return PRODUCTS[(idx - 1 + PRODUCTS.length) % PRODUCTS.length];
+      }
+      return current;
+    });
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col bg-[#07090E] text-slate-100 selection:bg-red-600 selection:text-white pb-0">
@@ -223,6 +255,8 @@ export default function App() {
         onClose={() => setSelectedProduct(null)}
         onAddToInquiry={handleAddToInquiry}
         isInInquiry={selectedProduct ? inquiryProductIds.has(selectedProduct.id) : false}
+        onNextProduct={handleNextProduct}
+        onPrevProduct={handlePrevProduct}
       />
 
       {/* 5. WhatsApp Bulk Inquiry Drawer */}

@@ -18,8 +18,8 @@ interface InquiryDrawerProps {
   isOpen: boolean;
   onClose: () => void;
   items: InquiryItem[];
-  onUpdateQuantity: (productId: string, quantity: number) => void;
-  onRemoveItem: (productId: string) => void;
+  onUpdateQuantity: (itemKey: string, quantity: number) => void;
+  onRemoveItem: (itemKey: string) => void;
   onClearAll: () => void;
 }
 
@@ -48,18 +48,18 @@ export const InquiryDrawer: React.FC<InquiryDrawerProps> = ({
   if (!isOpen) return null;
 
   const totalAmount = items.reduce(
-    (sum, item) => sum + item.product.price * item.quantity,
+    (sum, item) => sum + (item.variation?.price ?? item.product.price) * item.quantity,
     0
   );
 
   const bulkWhatsappUrl = createBulkInquiryWhatsAppUrl(items, customNotes);
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden">
+    <div className="fixed inset-0 z-50 overflow-hidden" role="dialog" aria-modal="true" aria-label="Bulk Inquiry Quote">
       {/* Backdrop */}
       <div
         onClick={onClose}
-        className="absolute inset-0 bg-black/75 backdrop-blur-sm transition-opacity animate-fadeIn cursor-pointer"
+        className="absolute inset-0 bg-black/75 backdrop-blur-sm transition-opacity animate-fadeIn"
       />
 
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
@@ -84,14 +84,14 @@ export const InquiryDrawer: React.FC<InquiryDrawerProps> = ({
               {items.length > 0 && (
                 <button
                   onClick={onClearAll}
-                  className="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-red-400 hover:bg-white/[0.04] transition-colors cursor-pointer min-h-[40px] flex items-center"
+                  className="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-400 hover:text-red-400 hover:bg-white/[0.04] transition-colors min-h-[40px] flex items-center"
                 >
                   Clear
                 </button>
               )}
               <button
                 onClick={onClose}
-                className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/[0.05] cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
+                className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/[0.05] min-h-[44px] min-w-[44px] flex items-center justify-center"
                 aria-label="Close quote drawer"
               >
                 <X className="w-5 h-5" />
@@ -116,67 +116,74 @@ export const InquiryDrawer: React.FC<InquiryDrawerProps> = ({
                 </div>
               </div>
             ) : (
-              items.map((item) => (
-                <div
-                  key={item.product.id}
-                  className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-red-500/30 transition-all flex gap-3"
-                >
-                  <img
-                    src={item.product.image}
-                    alt={item.product.name}
-                    className="w-16 h-16 rounded-xl object-cover bg-black/40 border border-white/[0.05] shrink-0"
-                  />
+              items.map((item) => {
+                const itemKey = item.variation ? `${item.product.id}-${item.variation.id}` : item.product.id;
+                const unitPrice = item.variation?.price ?? item.product.price;
+                return (
+                  <div
+                    key={itemKey}
+                    className="p-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-red-500/30 transition-all flex gap-3"
+                  >
+                    <img
+                      src={item.product.image}
+                      alt={item.product.name}
+                      className="w-16 h-16 rounded-xl object-cover bg-black/40 border border-white/[0.05] shrink-0"
+                    />
 
-                  <div className="flex-1 min-w-0">
-                    <h5 className="text-xs font-bold text-white truncate">
-                      {item.product.name}
-                    </h5>
-                    <div className="text-[11px] text-red-400 font-mono mt-0.5">
-                      ₹{item.product.price.toLocaleString('en-IN')} each
-                    </div>
-
-                    <div className="flex items-center justify-between mt-2.5">
-                      <div className="flex items-center rounded-xl bg-white/[0.05] border border-white/[0.08] p-0.5">
-                        <button
-                          onClick={() =>
-                            onUpdateQuantity(item.product.id, item.quantity - 1)
-                          }
-                          className="p-2 text-slate-300 hover:text-white cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center rounded-lg hover:bg-white/[0.06]"
-                          aria-label="Decrease quantity"
-                        >
-                          <Minus className="w-3.5 h-3.5" />
-                        </button>
-                        <span className="w-8 text-center text-xs font-bold text-white font-mono">
-                          {item.quantity}
-                        </span>
-                        <button
-                          onClick={() =>
-                            onUpdateQuantity(item.product.id, item.quantity + 1)
-                          }
-                          className="p-2 text-slate-300 hover:text-white cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center rounded-lg hover:bg-white/[0.06]"
-                          aria-label="Increase quantity"
-                        >
-                          <Plus className="w-3.5 h-3.5" />
-                        </button>
+                    <div className="flex-1 min-w-0">
+                      <h5 className="text-xs font-bold text-white truncate">
+                        {item.product.name}
+                        {item.variation && (
+                          <span className="ml-1 text-red-400 font-semibold">({item.variation.name})</span>
+                        )}
+                      </h5>
+                      <div className="text-[11px] text-red-400 font-mono mt-0.5">
+                        ₹{unitPrice.toLocaleString('en-IN')} each
                       </div>
 
-                      <div className="flex items-center gap-2.5">
-                        <span className="text-xs font-bold text-white font-mono">
-                          ₹{(item.product.price * item.quantity).toLocaleString('en-IN')}
-                        </span>
-                        <button
-                          onClick={() => onRemoveItem(item.product.id)}
-                          className="p-2 rounded-lg text-slate-500 hover:text-red-400 hover:bg-red-600/10 transition-colors cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
-                          title="Remove item"
-                          aria-label="Remove item"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
+                      <div className="flex items-center justify-between mt-2.5">
+                        <div className="flex items-center rounded-xl bg-white/[0.05] border border-white/[0.08] p-0.5">
+                          <button
+                            onClick={() =>
+                              onUpdateQuantity(itemKey, item.quantity - 1)
+                            }
+                            className="p-2 text-slate-300 hover:text-white min-h-[36px] min-w-[36px] flex items-center justify-center rounded-lg hover:bg-white/[0.06]"
+                            aria-label="Decrease quantity"
+                          >
+                            <Minus className="w-3.5 h-3.5" />
+                          </button>
+                          <span className="w-8 text-center text-xs font-bold text-white font-mono">
+                            {item.quantity}
+                          </span>
+                          <button
+                            onClick={() =>
+                              onUpdateQuantity(itemKey, item.quantity + 1)
+                            }
+                            className="p-2 text-slate-300 hover:text-white min-h-[36px] min-w-[36px] flex items-center justify-center rounded-lg hover:bg-white/[0.06]"
+                            aria-label="Increase quantity"
+                          >
+                            <Plus className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+
+                        <div className="flex items-center gap-2.5">
+                          <span className="text-xs font-bold text-white font-mono">
+                            ₹{(unitPrice * item.quantity).toLocaleString('en-IN')}
+                          </span>
+                          <button
+                            onClick={() => onRemoveItem(itemKey)}
+                            className="p-2 rounded-lg text-slate-500 hover:text-red-400 hover:bg-red-600/10 transition-colors min-h-[36px] min-w-[36px] flex items-center justify-center"
+                            title="Remove item"
+                            aria-label="Remove item"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))
+                );
+              })
             )}
           </div>
 

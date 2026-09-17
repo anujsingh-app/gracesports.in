@@ -119,7 +119,15 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Brand Logo - Fixed size and never shrinks */}
           <div
             onClick={() => handleNavClick('home')}
-            className="cursor-pointer shrink-0"
+            className="shrink-0"
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleNavClick('home');
+              }
+            }}
           >
             <BrandLogo showSubtitle={true} />
           </div>
@@ -132,7 +140,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`relative px-3.5 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all cursor-pointer ${
+                  className={`relative px-3.5 py-2 rounded-lg text-sm font-semibold tracking-wide transition-all ${
                     isActive
                       ? 'text-white font-bold'
                       : 'text-slate-300 hover:text-white hover:bg-white/[0.04]'
@@ -156,6 +164,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <input
                   type="text"
                   value={searchQuery}
+                  aria-label="Search products"
                   onClick={() => {
                     setIsSearchOpen(true);
                     if (activeTab !== 'catalogue') {
@@ -192,7 +201,7 @@ export const Header: React.FC<HeaderProps> = ({
                   <button
                     type="button"
                     onClick={() => setSearchQuery('')}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white p-1 cursor-pointer rounded-md hover:bg-white/10"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white p-1 rounded-md hover:bg-white/10"
                   >
                     <X className="w-3.5 h-3.5" />
                   </button>
@@ -258,7 +267,7 @@ export const Header: React.FC<HeaderProps> = ({
                             setIsSearchOpen(false);
                             if (activeTab !== 'catalogue') setActiveTab('catalogue');
                           }}
-                          className="w-full py-2 rounded-xl bg-red-600/20 hover:bg-red-600/30 border border-red-500/30 text-xs font-bold text-red-300 text-center transition-all cursor-pointer hover:text-white"
+                          className="w-full py-2 rounded-xl bg-red-600/20 hover:bg-red-600/30 border border-red-500/30 text-xs font-bold text-red-300 text-center transition-all hover:text-white"
                         >
                           View all {matchingProducts.length} results in Catalogue →
                         </button>
@@ -286,7 +295,7 @@ export const Header: React.FC<HeaderProps> = ({
                                 if (activeTab !== 'catalogue') setActiveTab('catalogue');
                                 setIsSearchOpen(false);
                               }}
-                              className="whitespace-nowrap px-2.5 py-1 rounded-lg text-xs font-medium bg-white/[0.04] hover:bg-red-600/20 text-slate-300 hover:text-red-300 border border-white/[0.08] hover:border-red-500/40 transition-all cursor-pointer"
+                              className="whitespace-nowrap px-2.5 py-1 rounded-lg text-xs font-medium bg-white/[0.04] hover:bg-red-600/20 text-slate-300 hover:text-red-300 border border-white/[0.08] hover:border-red-500/40 transition-all"
                             >
                               {tag}
                             </button>
@@ -306,7 +315,7 @@ export const Header: React.FC<HeaderProps> = ({
                               if (activeTab !== 'catalogue') setActiveTab('catalogue');
                               setIsSearchOpen(false);
                             }}
-                            className="flex items-center justify-between p-2 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] text-xs text-slate-200 border border-white/[0.06] hover:border-red-500/30 transition-all text-left cursor-pointer group"
+                            className="flex items-center justify-between p-2 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] text-xs text-slate-200 border border-white/[0.06] hover:border-red-500/30 transition-all text-left group"
                           >
                             <span className="group-hover:text-red-400 font-medium">TT Tables</span>
                             <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/[0.06] text-slate-400 font-mono">6 models</span>
@@ -318,7 +327,7 @@ export const Header: React.FC<HeaderProps> = ({
                               if (activeTab !== 'catalogue') setActiveTab('catalogue');
                               setIsSearchOpen(false);
                             }}
-                            className="flex items-center justify-between p-2 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] text-xs text-slate-200 border border-white/[0.06] hover:border-red-500/30 transition-all text-left cursor-pointer group"
+                            className="flex items-center justify-between p-2 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] text-xs text-slate-200 border border-white/[0.06] hover:border-red-500/30 transition-all text-left group"
                           >
                             <span className="group-hover:text-red-400 font-medium">TT Balls</span>
                             <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/[0.06] text-slate-400 font-mono">3 packs</span>
@@ -337,7 +346,7 @@ export const Header: React.FC<HeaderProps> = ({
                 setShowMobileSearch(!showMobileSearch);
                 setShowMobileMenu(false);
               }}
-              className="sm:hidden p-2.5 rounded-xl text-slate-300 hover:text-white liquid-glass shrink-0 cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="sm:hidden p-2.5 rounded-xl text-slate-300 hover:text-white liquid-glass shrink-0 min-h-[44px] min-w-[44px] flex items-center justify-center"
               aria-label="Search"
             >
               <Search className="w-4 h-4" />
@@ -346,7 +355,7 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Mobile Quote Button (under lg) */}
             <button
               onClick={openInquiryDrawer}
-              className="lg:hidden relative p-2.5 sm:px-3 sm:py-2 rounded-xl text-slate-300 hover:text-white liquid-glass shrink-0 cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center gap-1.5"
+              className="lg:hidden relative p-2.5 sm:px-3 sm:py-2 rounded-xl text-slate-300 hover:text-white liquid-glass shrink-0 min-h-[44px] min-w-[44px] flex items-center justify-center gap-1.5"
               aria-label="View Inquiry Quote"
               title="View Inquiry Quote Items"
             >
@@ -365,7 +374,7 @@ export const Header: React.FC<HeaderProps> = ({
                 setShowMobileMenu(!showMobileMenu);
                 setShowMobileSearch(false);
               }}
-              className="md:hidden p-2.5 rounded-xl text-slate-300 hover:text-white liquid-glass shrink-0 cursor-pointer min-h-[44px] min-w-[44px] flex items-center justify-center"
+              className="md:hidden p-2.5 rounded-xl text-slate-300 hover:text-white liquid-glass shrink-0 min-h-[44px] min-w-[44px] flex items-center justify-center"
               aria-label="Navigation Menu"
             >
               {showMobileMenu ? <X className="w-4 h-4 text-red-400" /> : <Menu className="w-4 h-4" />}
@@ -374,7 +383,7 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Header Quote Button - Desktop only */}
             <button
               onClick={openInquiryDrawer}
-              className="hidden lg:flex relative items-center gap-2 px-3.5 py-2 rounded-xl liquid-glass hover:border-red-500/40 text-slate-200 hover:text-white text-sm font-semibold transition-all cursor-pointer shrink-0 min-h-[44px]"
+              className="hidden lg:flex relative items-center gap-2 px-3.5 py-2 rounded-xl liquid-glass hover:border-red-500/40 text-slate-200 hover:text-white text-sm font-semibold transition-all shrink-0 min-h-[44px]"
               title="View Inquiry Quote Items"
             >
               <ClipboardList className="w-4 h-4 text-red-400 shrink-0" />
@@ -444,7 +453,7 @@ export const Header: React.FC<HeaderProps> = ({
                       handleNavClick(item.id);
                       setShowMobileMenu(false);
                     }}
-                    className={`flex items-center justify-between px-4 py-3 rounded-xl text-xs font-semibold transition-all cursor-pointer min-h-[48px] ${
+                    className={`flex items-center justify-between px-4 py-3 rounded-xl text-xs font-semibold transition-all min-h-[48px] ${
                       isActive
                         ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-md'
                         : 'text-slate-300 hover:text-white hover:bg-white/[0.05]'
@@ -462,7 +471,7 @@ export const Header: React.FC<HeaderProps> = ({
                   openInquiryDrawer();
                   setShowMobileMenu(false);
                 }}
-                className="flex items-center justify-between px-4 py-3 rounded-xl text-xs font-semibold text-slate-200 hover:text-white hover:bg-white/[0.05] border border-white/[0.06] transition-all cursor-pointer min-h-[48px]"
+                className="flex items-center justify-between px-4 py-3 rounded-xl text-xs font-semibold text-slate-200 hover:text-white hover:bg-white/[0.05] border border-white/[0.06] transition-all min-h-[48px]"
               >
                 <div className="flex items-center gap-2">
                   <ClipboardList className="w-4 h-4 text-red-400" />

@@ -46,21 +46,45 @@ export const Hero: React.FC<HeroProps> = ({
   const statShiftX2 = useTransform(smoothX, [-0.5, 0.5], [4, -4]);
   const statShiftY2 = useTransform(smoothY, [-0.5, 0.5], [3, -3]);
 
+  const animFrameId = React.useRef<number | null>(null);
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (typeof window !== 'undefined' && window.innerWidth < 1024) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    if (rect.width > 0 && rect.height > 0) {
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
-      mouseX.set(x);
-      mouseY.set(y);
+    const currentTarget = e.currentTarget;
+    const clientX = e.clientX;
+    const clientY = e.clientY;
+
+    if (animFrameId.current !== null) {
+      cancelAnimationFrame(animFrameId.current);
     }
+
+    animFrameId.current = requestAnimationFrame(() => {
+      const rect = currentTarget.getBoundingClientRect();
+      if (rect.width > 0 && rect.height > 0) {
+        const x = (clientX - rect.left) / rect.width - 0.5;
+        const y = (clientY - rect.top) / rect.height - 0.5;
+        mouseX.set(x);
+        mouseY.set(y);
+      }
+    });
   };
 
   const handleMouseLeave = () => {
+    if (animFrameId.current !== null) {
+      cancelAnimationFrame(animFrameId.current);
+      animFrameId.current = null;
+    }
     mouseX.set(0);
     mouseY.set(0);
   };
+
+  useEffect(() => {
+    return () => {
+      if (animFrameId.current !== null) {
+        cancelAnimationFrame(animFrameId.current);
+      }
+    };
+  }, []);
 
   const heroSlides = [
     {
@@ -78,7 +102,7 @@ export const Hero: React.FC<HeroProps> = ({
       title: 'Founder & CEO with Legend',
       highlight: 'Sharath Kamal',
       tagline: "India's Table Tennis Icon in Grace Sports Apparel",
-      image: '/images/hero/hero-sarathkamal.jpg',
+      image: '/images/hero/hero-sarathkamal.webp',
       pillText: 'SHARATH KAMAL APPROVED',
       spec: 'Pro Academy Gear'
     },
@@ -87,7 +111,7 @@ export const Hero: React.FC<HeroProps> = ({
       title: 'Precision Engineered',
       highlight: 'Championship Series',
       tagline: 'International Standards',
-      image: '/images/hero/hero-1.jpg',
+      image: '/images/hero/hero-1.webp',
       pillText: 'PRO SERIES × GRACE SPORTS',
       spec: '25mm Glare-Proof Surface'
     },
@@ -147,7 +171,7 @@ export const Hero: React.FC<HeroProps> = ({
             <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2.5 sm:gap-3 pt-2 w-full sm:w-auto">
               <button
                 onClick={onExploreCatalogue}
-                className="flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#CB2522] to-[#b01e1b] hover:from-[#d82d29] hover:to-[#CB2522] text-white font-bold text-xs sm:text-sm shadow-[0_0_25px_rgba(203,37,34,0.4)] transition-all transform active:scale-95 cursor-pointer min-h-[48px] text-center"
+                className="flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#CB2522] to-[#b01e1b] hover:from-[#d82d29] hover:to-[#CB2522] text-white font-bold text-xs sm:text-sm shadow-[0_0_25px_rgba(203,37,34,0.4)] transition-all transform active:scale-95 min-h-[48px] text-center"
               >
                 <span>View Products</span>
                 <ChevronRight className="w-4 h-4 shrink-0" />
@@ -178,7 +202,8 @@ export const Hero: React.FC<HeroProps> = ({
                 <button
                   key={idx}
                   onClick={() => setCurrentSlide(idx)}
-                  className={`h-1.5 rounded-full transition-all cursor-pointer ${currentSlide === idx
+                  aria-current={currentSlide === idx ? 'true' : undefined}
+                  className={`h-1.5 rounded-full transition-all ${currentSlide === idx
                     ? 'w-7 bg-red-500 shadow-[0_0_10px_rgba(229,32,44,0.7)]'
                     : 'w-2 bg-white/20 hover:bg-white/40'
                     }`}
@@ -217,9 +242,11 @@ export const Hero: React.FC<HeroProps> = ({
                   <img
                     src={slide.image}
                     alt={slide.title}
+                    width={600}
+                    height={600}
                     className="w-full h-full object-cover object-center"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).src = '/images/hero/hero-1.jpg';
+                      (e.target as HTMLImageElement).src = '/images/hero/hero-1.webp';
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />

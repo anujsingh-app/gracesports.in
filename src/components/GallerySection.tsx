@@ -91,6 +91,9 @@ export const GallerySection: React.FC = () => {
             >
               <div
                 onClick={() => setActiveIndex(idx)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setActiveIndex(idx); }}}
                 className="group relative rounded-2xl overflow-hidden bg-[#0A0D15] border border-white/[0.08] hover:border-red-500/50 backdrop-blur-xl shadow-lg transition-all duration-300 cursor-pointer"
               >
                 <img
@@ -116,6 +119,8 @@ export const GallerySection: React.FC = () => {
           <div
             onClick={() => setActiveIndex(null)}
             className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/95 backdrop-blur-md animate-fadeIn cursor-pointer"
+            role="dialog"
+            aria-modal="true"
           >
             <div
               onClick={(e) => e.stopPropagation()}
@@ -133,8 +138,9 @@ export const GallerySection: React.FC = () => {
 
                 {/* Close Button */}
                 <button
+                  type="button"
                   onClick={() => setActiveIndex(null)}
-                  className="absolute top-3 right-3 sm:top-4 sm:right-4 min-h-[44px] min-w-[44px] flex items-center justify-center p-2 rounded-xl bg-black/60 hover:bg-red-600 text-white/80 hover:text-white border border-white/10 transition-colors cursor-pointer z-10 backdrop-blur-md"
+                  className="absolute top-3 right-3 sm:top-4 sm:right-4 min-h-[44px] min-w-[44px] flex items-center justify-center p-2 rounded-xl bg-black/60 hover:bg-red-600 text-white/80 hover:text-white border border-white/10 transition-colors z-10 backdrop-blur-md"
                   aria-label="Close photo"
                 >
                   <X className="w-5 h-5" />
@@ -142,8 +148,9 @@ export const GallerySection: React.FC = () => {
 
                 {/* Previous Button */}
                 <button
+                  type="button"
                   onClick={handlePrev}
-                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-2xl bg-black/60 hover:bg-red-600 text-white/80 hover:text-white border border-white/10 hover:border-red-500 backdrop-blur-md transition-all duration-200 cursor-pointer shadow-xl group z-10 active:scale-95"
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-2xl bg-black/60 hover:bg-red-600 text-white/80 hover:text-white border border-white/10 hover:border-red-500 backdrop-blur-md transition-all duration-200 shadow-xl group z-10 active:scale-95"
                   aria-label="Previous photo"
                 >
                   <ChevronLeft className="w-6 h-6 transform group-hover:-translate-x-0.5 transition-transform" />
@@ -151,8 +158,9 @@ export const GallerySection: React.FC = () => {
 
                 {/* Next Button */}
                 <button
+                  type="button"
                   onClick={handleNext}
-                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-2xl bg-black/60 hover:bg-red-600 text-white/80 hover:text-white border border-white/10 hover:border-red-500 backdrop-blur-md transition-all duration-200 cursor-pointer shadow-xl group z-10 active:scale-95"
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-2xl bg-black/60 hover:bg-red-600 text-white/80 hover:text-white border border-white/10 hover:border-red-500 backdrop-blur-md transition-all duration-200 shadow-xl group z-10 active:scale-95"
                   aria-label="Next photo"
                 >
                   <ChevronRight className="w-6 h-6 transform group-hover:translate-x-0.5 transition-transform" />

@@ -49,11 +49,14 @@ export const AboutSection: React.FC = () => {
                 <div className="lg:col-span-5 relative">
                   <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-black/60 border border-white/[0.1] shadow-2xl">
                     <img
-                      src="/images/about gs/Vardhan Mashi.jpg"
-                      alt="Founder Vardhan Mashi"
+                      src="/images/about gs/Vardhan Mashi.webp"
+                      alt="Founder Vardhan Mashi with Sharath Kamal"
+                      width={500}
+                      height={625}
+                      loading="lazy"
                       className="w-full h-full object-cover object-top"
                       onError={(e) => {
-                        (e.target as HTMLImageElement).src = '/images/hero/hero-1.jpg';
+                        (e.target as HTMLImageElement).src = '/images/hero/hero-1.webp';
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
@@ -207,11 +210,14 @@ export const AboutSection: React.FC = () => {
                 <div className="max-w-2xl mx-auto">
                   <div className="rounded-2xl overflow-hidden border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.4)] relative">
                     <img
-                      src="/images/about gs/vd.jpg"
+                      src="/images/about gs/vd.webp"
                       alt="Vardhan Mashi, Founder & CEO of Grace Sports"
+                      width={672}
+                      height={378}
+                      loading="lazy"
                       className="w-full h-auto object-cover aspect-video"
                       onError={(e) => {
-                        (e.target as HTMLImageElement).src = '/images/hero/hero-1.jpg';
+                        (e.target as HTMLImageElement).src = '/images/hero/hero-1.webp';
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
@@ -296,11 +302,14 @@ export const AboutSection: React.FC = () => {
                 <div className="max-w-2xl mx-auto">
                   <div className="rounded-2xl overflow-hidden border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.4)] relative">
                     <img
-                      src="/images/about gs/vd-1.jpg"
+                      src="/images/about gs/vd-1.webp"
                       alt="Grace Sports Vision and Presence"
+                      width={672}
+                      height={378}
+                      loading="lazy"
                       className="w-full h-auto object-cover aspect-video"
                       onError={(e) => {
-                        (e.target as HTMLImageElement).src = '/images/hero/hero-1.jpg';
+                        (e.target as HTMLImageElement).src = '/images/hero/hero-1.webp';
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />

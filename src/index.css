@@ -225,3 +225,32 @@
 .group:hover .hover-scale-img {
   transform: scale(1.08);
 }
+
+/* Hint GPU compositing for glass cards to avoid paint thrashing */
+.liquid-glass,
+.liquid-glass-card,
+.liquid-glass-red {
+  will-change: transform;
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fadeIn,
+  .animate-slideInRight,
+  .animate-shrinkWidth,
+  .animate-spin-slow,
+  .animate-shimmer,
+  .animate-shimmer::after {
+    animation: none !important;
+  }
+
+  .liquid-glass-card:hover {
+    transform: none;
+  }
+
+  .hover-scale-img,
+  .group:hover .hover-scale-img {
+    transform: none;
+    transition: none;
+  }
+}

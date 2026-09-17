@@ -5,14 +5,21 @@ export const DISPLAY_PHONE = '+91 8791864565';
 export const OFFICIAL_EMAIL = 'info@gracesports.in';
 export const FACTORY_ADDRESS = 'Kanker Khera, Meerut Cantt, Meerut, Uttar Pradesh 250001';
 
-export function createProductWhatsAppUrl(product: Product, quantity = 1): string {
+export function createProductWhatsAppUrl(
+  product: Product,
+  quantity = 1,
+  variationName?: string,
+  effectivePrice?: number
+): string {
   const cleanNumber = '918791864565';
+  const price = effectivePrice ?? product.price;
+  const productName = variationName ? `${product.name} (${variationName})` : product.name;
   const text = `*Inquiry from Grace Sports Catalogue*\n\n` +
     `Hello Grace Sports Team,\n` +
     `I am interested in:\n` +
-    `🏓 *Product:* ${product.name}\n` +
+    `🏓 *Product:* ${productName}\n` +
     `📦 *Category:* ${product.category.toUpperCase()}\n` +
-    `💰 *Price:* ₹${product.price.toLocaleString('en-IN')}${quantity > 1 ? ` (Qty: ${quantity})` : ''}\n` +
+    `💰 *Price:* ₹${price.toLocaleString('en-IN')}${quantity > 1 ? ` (Qty: ${quantity})` : ''}\n` +
     `${product.badge ? `⭐ *Series:* ${product.badge}\n` : ''}` +
     `\nPlease share availability, bulk/academy discount rates, and shipping details to my location.`;
 
@@ -21,16 +28,21 @@ export function createProductWhatsAppUrl(product: Product, quantity = 1): string
 
 export function createBulkInquiryWhatsAppUrl(items: InquiryItem[], customNotes?: string): string {
   const cleanNumber = '918791864565';
-  const totalAmount = items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
+  const totalAmount = items.reduce((sum, item) => {
+    const price = item.variation?.price ?? item.product.price;
+    return sum + (price * item.quantity);
+  }, 0);
 
   let text = `*Grace Sports - Custom Order / Quotation Request*\n\n` +
     `Hello Grace Sports Team,\n` +
     `I would like an official quotation for the following items:\n\n`;
 
   items.forEach((item, index) => {
-    text += `${index + 1}. *${item.product.name}*\n` +
+    const price = item.variation?.price ?? item.product.price;
+    const itemName = item.variation ? `${item.product.name} (${item.variation.name})` : item.product.name;
+    text += `${index + 1}. *${itemName}*\n` +
       `   • Qty: ${item.quantity}\n` +
-      `   • Price: ₹${(item.product.price * item.quantity).toLocaleString('en-IN')}\n`;
+      `   • Price: ₹${(price * item.quantity).toLocaleString('en-IN')}\n`;
   });
 
   text += `\n📊 *Total Estimated Value:* ₹${totalAmount.toLocaleString('en-IN')}\n`;
