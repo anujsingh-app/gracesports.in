@@ -1,0 +1,49 @@
+name: Deploy Grace Sports to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+
+# Prevent concurrent deployments if pushes happen in rapid succession
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy to Hostinger
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js (v20)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 📦 Install Dependencies
+        run: npm ci
+
+      - name: 🛡️ TypeScript Strict Check
+        run: npm run lint
+
+      - name: 🏗️ Build Production Bundle
+        run: npm run build
+
+      - name: 🚀 Sync to Hostinger via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          port: 21
+          local-dir: ./dist/
+          # If your FTP account is rooted in /home/uXXXXX, use public_html/
+          # If your FTP account is rooted directly in public_html, use ./
+          server-dir: public_html/
+          dangerous-clean-slate: false
