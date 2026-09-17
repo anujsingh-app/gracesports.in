@@ -49,7 +49,6 @@ jobs:
           protocol: ftp
           port: 21
           local-dir: ./dist/
-          # If your FTP account is rooted in /home/uXXXXX, use public_html/
-          # If your FTP account is rooted directly in public_html, use ./
-          server-dir: public_html/
+          # Hostinger FTP accounts for specific websites are already rooted in public_html
+          server-dir: ./
           dangerous-clean-slate: false

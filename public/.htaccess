@@ -2,6 +2,9 @@
 # Grace Sports — Hostinger Apache / LiteSpeed Web Server Configuration
 # ------------------------------------------------------------------------------
 
+# Set DirectoryIndex to prioritize index.html (React Vite app) over index.php
+DirectoryIndex index.html index.php
+
 # 1. Force HTTPS
 <IfModule mod_rewrite.c>
   RewriteEngine On
