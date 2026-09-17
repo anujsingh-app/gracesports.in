@@ -1,4 +1,4 @@
-export type CategoryId = 'all' | 'tables' | 'balls' | 'accessories' | 'arena' | 'sportswear' | 'flooring';
+export type CategoryId = 'tables' | 'balls' | 'accessories' | 'arena' | 'sportswear' | 'flooring';
 
 export interface Product {
   id: string;
@@ -27,7 +27,6 @@ export interface Product {
 export interface Category {
   id: CategoryId;
   name: string;
-  count: number;
   iconName: string;
   image: string;
   description: string;

@@ -75,31 +75,33 @@ export const GallerySection: React.FC = () => {
               Grace Sports in Action
             </h2>
             <p className="text-slate-400 text-xs sm:text-sm">
-              From Meerut factory precision lines to state championships and moments with legendary athletes.
+              Explore our collection of {GALLERY_ITEMS.length} high-performance tournament tables, competition balls, and arena equipment.
             </p>
           </div>
         </FadeIn>
 
-        {/* Clean, Beautiful Gallery Grid in Liquid Glass */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        {/* Full Uncropped Masonry Gallery Grid in Liquid Glass */}
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 sm:gap-6">
           {GALLERY_ITEMS.map((item, idx) => (
-            <FadeIn key={item.id} delay={(idx % 6) * 0.07} direction="up" distance={18}>
+            <FadeIn
+              key={item.id}
+              delay={(idx % 6) * 0.04}
+              direction="none"
+              className="break-inside-avoid mb-4 sm:mb-6"
+            >
               <div
                 onClick={() => setActiveIndex(idx)}
-                className="group relative rounded-2xl overflow-hidden bg-white/[0.03] border border-white/[0.08] hover:border-red-500/50 backdrop-blur-xl shadow-lg transition-all duration-300 cursor-pointer aspect-[4/3]"
+                className="group relative rounded-2xl overflow-hidden bg-[#0A0D15] border border-white/[0.08] hover:border-red-500/50 backdrop-blur-xl shadow-lg transition-all duration-300 cursor-pointer"
               >
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover object-center hover-scale-img"
+                  className="w-full h-auto block object-contain transition-transform duration-500 group-hover:scale-[1.02]"
                   loading="lazy"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/images/gallery/gallery-1.jpg';
-                  }}
                 />
 
-                {/* Subtle Hover Overlay with Zoom Icon */}
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                {/* Minimal Hover Overlay with Zoom Icon */}
+                <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
                   <div className="p-3 rounded-full bg-black/60 text-white border border-white/20 backdrop-blur-md transform scale-90 group-hover:scale-100 transition-transform duration-300">
                     <ZoomIn className="w-5 h-5 text-red-400" />
                   </div>
@@ -109,35 +111,30 @@ export const GallerySection: React.FC = () => {
           ))}
         </div>
 
-        {/* Lightbox Modal with Next & Previous Controls */}
+        {/* Clean Minimalist Lightbox Modal */}
         {currentPhoto && activeIndex !== null && (
           <div
             onClick={() => setActiveIndex(null)}
-            className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-6 bg-black/95 backdrop-blur-md animate-fadeIn cursor-pointer"
+            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/95 backdrop-blur-md animate-fadeIn cursor-pointer"
           >
             <div
               onClick={(e) => e.stopPropagation()}
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
-              className="relative max-w-4xl w-full rounded-2xl sm:rounded-3xl overflow-hidden bg-black border border-white/10 shadow-2xl cursor-default select-none"
+              className="relative max-w-5xl w-full max-h-[92vh] rounded-2xl sm:rounded-3xl overflow-hidden bg-black/80 border border-white/10 shadow-2xl cursor-default select-none flex items-center justify-center"
             >
               {/* Photo Display */}
-              <div className="relative aspect-[16/10] bg-black flex items-center justify-center">
+              <div className="relative w-full h-full flex items-center justify-center p-2 sm:p-4">
                 <img
                   src={currentPhoto.image}
                   alt={currentPhoto.title}
-                  className="w-full h-full object-contain"
+                  className="max-h-[85vh] w-auto max-w-full object-contain rounded-lg"
                 />
-
-                {/* Counter Badge */}
-                <div className="absolute top-3 left-3 sm:top-4 sm:left-4 px-3 py-1 rounded-xl bg-black/70 text-white/90 text-xs font-mono font-bold tracking-wider backdrop-blur-md border border-white/10 z-10">
-                  {activeIndex + 1} / {GALLERY_ITEMS.length}
-                </div>
 
                 {/* Close Button */}
                 <button
                   onClick={() => setActiveIndex(null)}
-                  className="absolute top-3 right-3 sm:top-4 sm:right-4 min-h-[44px] min-w-[44px] flex items-center justify-center p-2 rounded-xl bg-black/70 text-white hover:bg-red-600 transition-colors cursor-pointer z-10"
+                  className="absolute top-3 right-3 sm:top-4 sm:right-4 min-h-[44px] min-w-[44px] flex items-center justify-center p-2 rounded-xl bg-black/60 hover:bg-red-600 text-white/80 hover:text-white border border-white/10 transition-colors cursor-pointer z-10 backdrop-blur-md"
                   aria-label="Close photo"
                 >
                   <X className="w-5 h-5" />
@@ -146,7 +143,7 @@ export const GallerySection: React.FC = () => {
                 {/* Previous Button */}
                 <button
                   onClick={handlePrev}
-                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-2xl bg-black/70 hover:bg-red-600 text-white border border-white/10 hover:border-red-500 backdrop-blur-md transition-all duration-200 cursor-pointer shadow-xl group z-10 active:scale-95"
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-2xl bg-black/60 hover:bg-red-600 text-white/80 hover:text-white border border-white/10 hover:border-red-500 backdrop-blur-md transition-all duration-200 cursor-pointer shadow-xl group z-10 active:scale-95"
                   aria-label="Previous photo"
                 >
                   <ChevronLeft className="w-6 h-6 transform group-hover:-translate-x-0.5 transition-transform" />
@@ -155,7 +152,7 @@ export const GallerySection: React.FC = () => {
                 {/* Next Button */}
                 <button
                   onClick={handleNext}
-                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-2xl bg-black/70 hover:bg-red-600 text-white border border-white/10 hover:border-red-500 backdrop-blur-md transition-all duration-200 cursor-pointer shadow-xl group z-10 active:scale-95"
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 min-h-[44px] min-w-[44px] flex items-center justify-center rounded-2xl bg-black/60 hover:bg-red-600 text-white/80 hover:text-white border border-white/10 hover:border-red-500 backdrop-blur-md transition-all duration-200 cursor-pointer shadow-xl group z-10 active:scale-95"
                   aria-label="Next photo"
                 >
                   <ChevronRight className="w-6 h-6 transform group-hover:translate-x-0.5 transition-transform" />

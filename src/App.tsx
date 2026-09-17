@@ -11,13 +11,87 @@ import { PolicyModal } from './components/PolicyModal';
 import { Footer } from './components/Footer';
 import { ActiveTab, CategoryId, InquiryItem, Product } from './types';
 
+const VALID_TABS: ActiveTab[] = ['home', 'catalogue', 'about', 'gallery', 'contact', 'policies'];
+
+function getInitialTab(): ActiveTab {
+  if (typeof window === 'undefined') return 'home';
+
+  // 1. Check URL hash (e.g. #gallery, #about, #catalogue)
+  const hash = window.location.hash.replace(/^#\/?/, '').toLowerCase() as ActiveTab;
+  if (VALID_TABS.includes(hash)) {
+    return hash;
+  }
+
+  // 2. Check URL pathname (e.g. /gallery, /about)
+  const path = window.location.pathname.replace(/^\//, '').toLowerCase() as ActiveTab;
+  if (VALID_TABS.includes(path)) {
+    return path;
+  }
+
+  // 3. Fallback to localStorage persistence
+  try {
+    const saved = localStorage.getItem('grace_sports_active_tab') as ActiveTab;
+    if (saved && VALID_TABS.includes(saved)) {
+      return saved;
+    }
+  } catch {}
+
+  return 'home';
+}
+
 export default function App() {
-  const [activeTab, setActiveTab] = useState<ActiveTab>('home');
-  const [selectedCategory, setSelectedCategory] = useState<CategoryId>('all');
+  const [activeTab, setActiveTab] = useState<ActiveTab>(getInitialTab);
+  const [selectedCategory, setSelectedCategory] = useState<CategoryId>(() => {
+    try {
+      const saved = localStorage.getItem('grace_sports_category') as CategoryId;
+      if (saved && ['tables', 'balls', 'accessories', 'arena', 'sportswear', 'flooring'].includes(saved)) {
+        return saved;
+      }
+    } catch {}
+    return 'tables';
+  });
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [inquiryDrawerOpen, setInquiryDrawerOpen] = useState<boolean>(false);
   const [activePolicy, setActivePolicy] = useState<'terms' | 'refund' | 'privacy' | null>(null);
+
+  // Sync activeTab with URL hash and localStorage on change
+  useEffect(() => {
+    const currentHash = window.location.hash.replace(/^#\/?/, '').toLowerCase();
+    if (currentHash !== activeTab) {
+      const targetHash = activeTab === 'home' ? '' : `#${activeTab}`;
+      window.history.replaceState(null, '', targetHash || window.location.pathname);
+    }
+    try {
+      localStorage.setItem('grace_sports_active_tab', activeTab);
+    } catch {}
+  }, [activeTab]);
+
+  // Sync selectedCategory to localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem('grace_sports_category', selectedCategory);
+    } catch {}
+  }, [selectedCategory]);
+
+  // Listen to browser Back / Forward buttons (hashchange and popstate)
+  useEffect(() => {
+    const handleNavigation = () => {
+      const hash = window.location.hash.replace(/^#\/?/, '').toLowerCase() as ActiveTab;
+      if (VALID_TABS.includes(hash)) {
+        setActiveTab(hash);
+      } else if (!hash) {
+        setActiveTab('home');
+      }
+    };
+
+    window.addEventListener('hashchange', handleNavigation);
+    window.addEventListener('popstate', handleNavigation);
+    return () => {
+      window.removeEventListener('hashchange', handleNavigation);
+      window.removeEventListener('popstate', handleNavigation);
+    };
+  }, []);
 
   // Local storage persistence for inquiry items
   const [inquiryItems, setInquiryItems] = useState<InquiryItem[]>(() => {

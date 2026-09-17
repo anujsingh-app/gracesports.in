@@ -1,7 +1,6 @@
 import React from 'react';
 import { Hero } from './Hero';
 import { TestimonialsSection } from './TestimonialsSection';
-import { GallerySection } from './GallerySection';
 import { FadeIn } from './FadeIn';
 import { ActiveTab, CategoryId, Product } from '../types';
 import { CATEGORIES } from '../data/products';
@@ -49,7 +48,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
           </FadeIn>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-            {CATEGORIES.filter((c) => c.id !== 'all').map((cat, idx) => (
+            {CATEGORIES.map((cat, idx) => (
               <FadeIn key={cat.id} delay={(idx % 6) * 0.06} direction="up" distance={16}>
                 <div
                   onClick={() => {
@@ -62,20 +61,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   <img
                     src={cat.image}
                     alt={cat.name}
-                    className="absolute inset-0 w-full h-full object-cover hover-scale-img"
+                    className="absolute inset-0 w-full h-full object-contain bg-black/20 p-2 sm:p-3 transition-transform duration-300 group-hover:scale-[1.03]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-85 group-hover:opacity-90" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-85 group-hover:opacity-90" />
 
-                  <div className="relative z-10 space-y-1">
-                    <span className="text-[10px] font-mono text-red-400 font-bold uppercase block">
-                      {cat.count} Products
-                    </span>
+                  <div className="relative z-10">
                     <h4 className="font-display text-base sm:text-xl font-bold text-white group-hover:text-red-300 transition-colors uppercase leading-none">
                       {cat.name}
                     </h4>
-                    <p className="text-[11px] text-slate-300 line-clamp-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                      {cat.description}
-                    </p>
                   </div>
                 </div>
               </FadeIn>
@@ -86,9 +79,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
       {/* 3. Coach Reviews & Testimonials */}
       <TestimonialsSection />
-
-      {/* 4. On-Court Photography & Factory Gallery */}
-      <GallerySection />
     </div>
   );
 };

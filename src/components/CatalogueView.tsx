@@ -49,7 +49,7 @@ export const CatalogueView: React.FC<CatalogueViewProps> = ({
   const filteredProducts = useMemo(() => {
     return PRODUCTS.filter((product) => {
       // Category match
-      if (selectedCategory !== 'all' && product.category !== selectedCategory) {
+      if (product.category !== selectedCategory) {
         return false;
       }
       // Search match
@@ -127,11 +127,6 @@ export const CatalogueView: React.FC<CatalogueViewProps> = ({
                 }`}
               >
                 <span>{category.name}</span>
-                <span className={`px-1.5 py-0.5 rounded-full text-[10px] font-mono ${
-                  isSelected ? 'bg-black/30 text-white' : 'bg-white/[0.06] text-slate-400'
-                }`}>
-                  {category.count}
-                </span>
               </button>
             );
           })}
@@ -173,7 +168,7 @@ export const CatalogueView: React.FC<CatalogueViewProps> = ({
             <button
               onClick={() => {
                 setSearchQuery('');
-                onSelectCategory('all');
+                onSelectCategory('tables');
               }}
               className="px-4 py-2 rounded-xl bg-red-600 text-white text-xs font-bold cursor-pointer hover:bg-red-500 transition-colors min-h-[44px]"
             >

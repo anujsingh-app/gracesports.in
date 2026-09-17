@@ -1,48 +1,58 @@
 import { GalleryItem } from '../types';
 
-export const GALLERY_ITEMS: GalleryItem[] = [
-  {
-    id: 'legend-sharath',
-    title: 'Founder Vardhan Mashi with Legend Sharath Kamal',
-    category: 'Celebrity Endorsement',
-    image: '/images/gallery/gallery-1.jpg',
-    description: "Grace Sports Founder & CEO Vardhan Mashi presenting custom Grace Sports apparel to India's Table Tennis Legend Sharath Kamal.",
-    featured: true
-  },
-  {
-    id: 'national-para-tt',
-    title: 'Indian National Para Table Tennis Contingent',
-    category: 'National Pride',
-    image: '/images/gallery/gallery-2.jpg',
-    description: 'Indian wheelchair and para table tennis medalists proud in Grace Sports championship gear holding the Indian tricolour.',
-    featured: true
-  },
-  {
-    id: 'ambala-championship',
-    title: 'Ambala District Table Tennis Championship',
-    category: 'Tournaments',
-    image: '/images/gallery/gallery-3.jpg',
-    description: 'Official match play hosted on Grace Sports tournament tables and court barriers.'
-  },
-  {
-    id: 'academy-champs',
-    title: 'Victory Alpha Academy Junior Squad',
-    category: 'Academies',
-    image: '/images/gallery/gallery-4.jpg',
-    description: 'Junior talent in customized Grace Sports team kits standing by GS Sonic Pro competition tables.'
-  },
-  {
-    id: 'sonic-pro-assembly',
-    title: 'Sonic Pro 25mm Factory Precision Line',
-    category: 'Manufacturing',
-    image: '/images/gallery/gallery-5.jpg',
-    description: 'Precision automated edge-banding and electrostatic powder coating of GS tournament frames in Meerut.'
-  },
-  {
-    id: 'balls-qc',
-    title: '3-Star Gold 40+ Tournament Quality Control',
-    category: 'Quality Testing',
-    image: '/images/gallery/gallery-6.jpg',
-    description: 'Automated sphericity bounce-height calibration ensuring zero deviation on international tournament balls.'
-  }
-];
+// Automatically discover all images in /public/images/gallery (including any future additions or subfolders)
+const imageModules = import.meta.glob(
+  '/public/images/gallery/**/*.{png,jpg,jpeg,webp,svg,PNG,JPG,JPEG,WEBP,gif,GIF,avif,AVIF}',
+  { eager: true, query: '?url', import: 'default' }
+);
+
+function formatTitle(filename: string): string {
+  // Remove file extension
+  const baseName = filename.replace(/\.[^/.]+$/, '');
+
+  return baseName
+    .replace(/\bgs\b/gi, 'GS')
+    .replace(/\btt\b/gi, 'TT')
+    .split(' ')
+    .map((word) => {
+      if (word.toUpperCase() === 'GS' || word.toUpperCase() === 'TT') {
+        return word.toUpperCase();
+      }
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(' ');
+}
+
+function inferCategory(filename: string): string {
+  const lower = filename.toLowerCase();
+  if (lower.includes('ball')) return 'Balls';
+  if (lower.includes('table')) return 'Tables';
+  if (lower.includes('racket') || lower.includes('blade') || lower.includes('rubber')) return 'Rackets';
+  if (lower.includes('apparel') || lower.includes('jersey')) return 'Sportswear';
+  if (lower.includes('court') || lower.includes('flooring') || lower.includes('barrier')) return 'Arena';
+  return 'Equipment';
+}
+
+export const GALLERY_ITEMS: GalleryItem[] = Object.keys(imageModules)
+  .sort((a, b) => {
+    // Natural alphanumeric sort so "tables (1)", "tables (2)", "tables (10)" appear in correct sequence
+    return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
+  })
+  .map((fullPath, index) => {
+    const filename = fullPath.split('/').pop() || `image-${index + 1}`;
+    const rawVal = imageModules[fullPath];
+    const resolvedUrl = typeof rawVal === 'string' ? rawVal : (rawVal as { default?: string })?.default;
+    
+    // In Vite, files inside /public are served at root path without the /public prefix
+    const publicUrl = fullPath.replace(/^\/public/, '');
+    const finalImageSrc = resolvedUrl || encodeURI(publicUrl);
+
+    return {
+      id: `gallery-${index + 1}`,
+      title: formatTitle(filename),
+      category: inferCategory(filename),
+      image: finalImageSrc,
+      description: `Grace Sports high-performance equipment — ${formatTitle(filename)}.`,
+      featured: index < 4
+    };
+  });

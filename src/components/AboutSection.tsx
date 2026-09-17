@@ -8,7 +8,9 @@ import {
   Target,
   Compass,
   MessageCircle,
-  Quote
+  Quote,
+  Eye,
+  Mic
 } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
@@ -47,11 +49,11 @@ export const AboutSection: React.FC = () => {
                 <div className="lg:col-span-5 relative">
                   <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-black/60 border border-white/[0.1] shadow-2xl">
                     <img
-                      src="/images/gallery/gallery-1.jpg"
-                      alt="Founder Vardhan Mashi with Legend Sharath Kamal"
+                      src="/images/about gs/Vardhan Mashi.jpg"
+                      alt="Founder Vardhan Mashi"
                       className="w-full h-full object-cover object-top"
                       onError={(e) => {
-                        (e.target as HTMLImageElement).src = '/images/gallery/gallery-1.jpg';
+                        (e.target as HTMLImageElement).src = '/images/hero/hero-1.jpg';
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
@@ -63,9 +65,7 @@ export const AboutSection: React.FC = () => {
                       <h4 className="text-xs sm:text-sm font-bold text-white">
                         Vardhan Mashi with Sharath Kamal
                       </h4>
-                      <p className="text-[10px] sm:text-[11px] text-slate-300">
-                        Founder & CEO presenting custom Grace Sports apparel to India's Table Tennis Icon.
-                      </p>
+          
                     </div>
                   </div>
                 </div>
@@ -165,6 +165,172 @@ export const AboutSection: React.FC = () => {
             </div>
           </FadeIn>
         </div>
+
+        {/* Founder's Message Section — Above Vision Section (Liquid Glass) */}
+        <FadeIn direction="up" distance={24} delay={0.1}>
+          <div className="mt-10 sm:mt-16 rounded-3xl p-[1px] overflow-hidden"
+            style={{
+              background: 'linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(229,32,44,0.3) 50%, rgba(255,255,255,0.06) 100%)',
+            }}
+          >
+            <div className="rounded-[23px] relative overflow-hidden"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(7,9,14,0.93) 50%, rgba(229,32,44,0.03) 100%)',
+                backdropFilter: 'blur(24px)',
+                WebkitBackdropFilter: 'blur(24px)',
+              }}
+            >
+              {/* Specular highlight */}
+              <div
+                className="absolute top-0 left-0 right-0 h-1/3 pointer-events-none"
+                style={{
+                  background: 'linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%)',
+                }}
+              />
+
+              {/* Subtle corner glow */}
+              <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-red-500/[0.06] blur-[80px] pointer-events-none" />
+
+              <div className="relative p-5 sm:p-8 lg:p-10 space-y-6 sm:space-y-8">
+                {/* Founder's Message Header */}
+                <div className="text-center max-w-2xl mx-auto">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-red-600/15 border border-red-500/30 text-[10px] sm:text-[11px] font-bold text-red-400 uppercase tracking-wider mb-2">
+                    <Mic className="w-3.5 h-3.5" />
+                    <span>FROM THE FOUNDER</span>
+                  </div>
+                  <h3 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase tracking-tight">
+                    Founder's Message
+                  </h3>
+                </div>
+
+                {/* Founder's Photo — Displayed like Vision section image (Liquid Glass Frame, aspect-video, vd.jpg) */}
+                <div className="max-w-2xl mx-auto">
+                  <div className="rounded-2xl overflow-hidden border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.4)] relative">
+                    <img
+                      src="/images/about gs/vd.jpg"
+                      alt="Vardhan Mashi, Founder & CEO of Grace Sports"
+                      className="w-full h-auto object-cover aspect-video"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/images/hero/hero-1.jpg';
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
+                    {/* Glass reflection */}
+                    <div
+                      className="absolute inset-0 pointer-events-none"
+                      style={{
+                        background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 40%)',
+                      }}
+                    />
+                  </div>
+                </div>
+
+                {/* Message Content & Quote */}
+                <div className="max-w-3xl mx-auto space-y-4">
+                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                    Vardhan Mashi, Founder of Grace sports is an able administrator of vision and initiative; It firmly believe in the power of sports as a transformative tool. We follow the adage that if you plan for a year, you should sow rice; if you plan for a decade, you should plant trees; and if you plan for a lifetime of fitness, you should educate people through sports.
+                  </p>
+                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                    This quote encapsulates our commitment to promoting lifelong fitness and well-being through sports. We recognize that sports have a profound impact on individuals, particularly during their formative years. Through our initiatives, we strive to shape individuals into well-rounded individuals with dynamic personalities.
+                  </p>
+                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                    In addition to promoting sports, we believe sports equipment plays important role in the sports industry. Grace Sports also aims to provide high-quality sports products at affordable prices. We understand the importance of having access to reliable and durable sports equipment, and we are dedicated to ensuring that individuals can engage in sports without any financial barriers.
+                  </p>
+
+                  {/* Signature quote */}
+                  <div className="p-3.5 sm:p-4 rounded-2xl relative overflow-hidden mt-4"
+                    style={{
+                      background: 'linear-gradient(135deg, rgba(229,32,44,0.1) 0%, rgba(7,9,14,0.6) 100%)',
+                      border: '1px solid rgba(229,32,44,0.25)',
+                    }}
+                  >
+                    <Quote className="w-5 h-5 sm:w-6 sm:h-6 text-red-400/40 absolute top-3 right-3" />
+                    <p className="text-xs sm:text-sm text-red-100 italic leading-relaxed pr-6">
+                      "Educate people through sports — that is the foundation of a truly fit nation."
+                    </p>
+                    <span className="text-[10px] sm:text-[11px] text-red-400 font-bold block mt-2">
+                      — Vardhan Mashi, Founder & CEO
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
+
+        {/* Vision Section — Below Founder's Message (Liquid Glass) */}
+        <FadeIn direction="up" distance={24} delay={0.15}>
+          <div className="mt-10 sm:mt-16 rounded-3xl p-[1px] overflow-hidden"
+            style={{
+              background: 'linear-gradient(135deg, rgba(229,32,44,0.35) 0%, rgba(255,255,255,0.1) 50%, rgba(229,32,44,0.2) 100%)',
+            }}
+          >
+            <div className="rounded-[23px] relative overflow-hidden"
+              style={{
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(7,9,14,0.93) 50%, rgba(229,32,44,0.03) 100%)',
+                backdropFilter: 'blur(24px)',
+                WebkitBackdropFilter: 'blur(24px)',
+              }}
+            >
+              {/* Specular top highlight */}
+              <div
+                className="absolute top-0 left-0 right-0 h-1/3 pointer-events-none"
+                style={{
+                  background: 'linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%)',
+                }}
+              />
+
+              <div className="relative p-5 sm:p-8 lg:p-10 space-y-6 sm:space-y-8">
+                {/* Vision Header */}
+                <div className="text-center max-w-2xl mx-auto">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-red-600/15 border border-red-500/30 text-[10px] sm:text-[11px] font-bold text-red-400 uppercase tracking-wider mb-2">
+                    <Eye className="w-3.5 h-3.5" />
+                    <span>OUR DRIVING PURPOSE</span>
+                  </div>
+                  <h3 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase tracking-tight">
+                    Vision
+                  </h3>
+                </div>
+
+                {/* Vision Photo — vd-1.jpg (Reversed) */}
+                <div className="max-w-2xl mx-auto">
+                  <div className="rounded-2xl overflow-hidden border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.4)] relative">
+                    <img
+                      src="/images/about gs/vd-1.jpg"
+                      alt="Grace Sports Vision and Presence"
+                      className="w-full h-auto object-cover aspect-video"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = '/images/hero/hero-1.jpg';
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
+                    {/* Glass reflection */}
+                    <div
+                      className="absolute inset-0 pointer-events-none"
+                      style={{
+                        background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 40%)',
+                      }}
+                    />
+                  </div>
+                </div>
+
+                {/* Vision Content */}
+                <div className="max-w-3xl mx-auto space-y-4">
+                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                    At Grace Sports, our vision is to create a society where sports and physical fitness are embraced and valued as essential components of a well-rounded life. We envision a world where individuals of all ages and backgrounds have access to quality sports equipment at affordable prices.
+                  </p>
+                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                    We aim to break down barriers and create opportunities for individuals from all walks of life to participate in and benefit from sports. As part of our vision, we strive to provide high-quality sports products that are accessible and affordable to individuals across different socioeconomic backgrounds.
+                  </p>
+                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                    We believe that everyone should have the opportunity to engage in sports and enjoy the associated benefits, regardless of their financial resources. In pursuit of our vision, we are committed to continuous innovation, collaboration with like-minded partners, and making a positive impact on the sporting landscape of India.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </FadeIn>
+
       </div>
     </section>
   );

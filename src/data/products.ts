@@ -2,60 +2,46 @@ import { Category, Product } from '../types';
 
 export const CATEGORIES: Category[] = [
   {
-    id: 'all',
-    name: 'All Products',
-    count: 20,
-    iconName: 'LayoutGrid',
-    image: '/images/products/category-all.jpg',
-    description: 'Complete range of championship table tennis equipment and apparel'
-  },
-  {
     id: 'tables',
-    name: 'TT Tables',
-    count: 6,
+    name: 'Tables',
     iconName: 'Table',
-    image: '/images/products/category-tables.jpg',
+    image: '/images/categories/grace sports table.png',
     description: 'ITTF standard competition, academy & club foldable tables'
   },
   {
     id: 'balls',
-    name: 'TT Balls',
-    count: 3,
+    name: 'Balls',
     iconName: 'CircleDot',
-    image: '/images/products/category-balls.jpg',
+    image: '/images/categories/grace balls.png',
     description: '144-pack seamless ABS competition Gold, Unique & Practice balls'
+  },
+  {
+    id: 'sportswear',
+    name: 'SportsWear',
+    iconName: 'Shirt',
+    image: '/images/categories/grace sportwear.png',
+    description: 'Custom sublimated lightweight dry-fit jerseys for academies & clubs'
+  },
+  {
+    id: 'arena',
+    name: 'Arena',
+    iconName: 'Shield',
+    image: '/images/categories/grace arena.jpg',
+    description: 'Surround barriers, referee podiums & court equipment'
+  },
+  {
+    id: 'flooring',
+    name: 'Flooring',
+    iconName: 'Layers',
+    image: '/images/categories/grace flooring.jpeg',
+    description: 'Shock-absorbing anti-skid embossed PVC sports academy matting'
   },
   {
     id: 'accessories',
     name: 'Accessories',
-    count: 8,
     iconName: 'Wrench',
-    image: '/images/products/category-accessories.jpg',
+    image: '/images/categories/grace assessories.png',
     description: 'Ball pickers, returnboards, catcher nets, stands & heavy covers'
-  },
-  {
-    id: 'arena',
-    name: 'Arena & Court',
-    count: 2,
-    iconName: 'Shield',
-    image: '/images/products/category-arena.jpg',
-    description: 'Surround barriers, referee podiums & court equipment'
-  },
-  {
-    id: 'sportswear',
-    name: 'Sportswear',
-    count: 2,
-    iconName: 'Shirt',
-    image: '/images/products/category-sportswear.jpg',
-    description: 'Custom sublimated lightweight dry-fit jerseys for academies & clubs'
-  },
-  {
-    id: 'flooring',
-    name: 'TT Flooring',
-    count: 1,
-    iconName: 'Layers',
-    image: '/images/products/category-flooring.jpg',
-    description: 'Shock-absorbing anti-skid embossed PVC sports academy matting'
   }
 ];
 
