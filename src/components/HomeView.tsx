@@ -41,7 +41,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
               <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase tracking-tight">
                 Featured Categories
               </h2>
-              <p className="text-slate-400 text-xs sm:text-sm">
+              <p className="text-slate-400 text-sm sm:text-base">
                 Discover competition tables, tournament balls, academy barriers, and custom athletic jerseys.
               </p>
             </div>

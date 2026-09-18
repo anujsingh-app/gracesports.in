@@ -52,7 +52,7 @@ export const GALLERY_ITEMS: GalleryItem[] = Object.keys(imageModules)
       title: formatTitle(filename),
       category: inferCategory(filename),
       image: finalImageSrc,
-      description: `Grace Sports high-performance equipment — ${formatTitle(filename)}.`,
+      description: `Grace Sport high-performance equipment — ${formatTitle(filename)}.`,
       featured: index < 4
     };
   });

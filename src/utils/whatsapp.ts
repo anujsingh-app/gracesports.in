@@ -14,8 +14,8 @@ export function createProductWhatsAppUrl(
   const cleanNumber = '918791864565';
   const price = effectivePrice ?? product.price;
   const productName = variationName ? `${product.name} (${variationName})` : product.name;
-  const text = `*Inquiry from Grace Sports Catalogue*\n\n` +
-    `Hello Grace Sports Team,\n` +
+  const text = `*Inquiry from Grace Sport Catalogue*\n\n` +
+    `Hello Grace Sport Team,\n` +
     `I am interested in:\n` +
     `🏓 *Product:* ${productName}\n` +
     `📦 *Category:* ${product.category.toUpperCase()}\n` +
@@ -33,8 +33,8 @@ export function createBulkInquiryWhatsAppUrl(items: InquiryItem[], customNotes?:
     return sum + (price * item.quantity);
   }, 0);
 
-  let text = `*Grace Sports - Custom Order / Quotation Request*\n\n` +
-    `Hello Grace Sports Team,\n` +
+  let text = `*Grace Sport - Custom Order / Quotation Request*\n\n` +
+    `Hello Grace Sport Team,\n` +
     `I would like an official quotation for the following items:\n\n`;
 
   items.forEach((item, index) => {
@@ -58,6 +58,6 @@ export function createBulkInquiryWhatsAppUrl(items: InquiryItem[], customNotes?:
 
 export function createGeneralWhatsAppUrl(message?: string): string {
   const cleanNumber = '918791864565';
-  const text = message || `Hello Grace Sports, I am contacting you regarding your Table Tennis products & academy equipment. Please share your latest catalogue and pricing.`;
+  const text = message || `Hello Grace Sport, I am contacting you regarding your Table Tennis products & academy equipment. Please share your latest catalogue and pricing.`;
   return `https://wa.me/${cleanNumber}?text=${encodeURIComponent(text)}`;
 }

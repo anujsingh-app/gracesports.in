@@ -1,6 +1,6 @@
-# Grace Sports
+# Grace Sport
 
-A minimal React + Vite storefront for Grace Sports, a table tennis equipment brand focused on premium tables, balls, accessories, arena gear, and sportswear.
+A minimal React + Vite storefront for Grace Sport, a table tennis equipment brand focused on premium tables, balls, accessories, arena gear, and sportswear.
 
 ## What this project does
 

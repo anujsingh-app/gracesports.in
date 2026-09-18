@@ -1,5 +1,5 @@
 /**
- * Image optimization script for Grace Sports.
+ * Image optimization script for Grace Sport.
  * Converts all PNG/JPG images to optimized WebP with appropriate sizing.
  * Run: node scripts/optimize-images.mjs
  */
@@ -75,7 +75,7 @@ function walkDir(dir) {
 }
 
 async function main() {
-  console.log('🏓 Grace Sports Image Optimizer\n');
+  console.log('🏓 Grace Sport Image Optimizer\n');
   const files = walkDir(IMAGES_DIR).filter(f =>
     /\.(png|jpe?g)$/i.test(f)
   );

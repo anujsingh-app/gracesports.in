@@ -34,7 +34,7 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Col 1: Brand & Bio (5 cols) */}
           <div className="lg:col-span-5 space-y-4">
             <BrandLogo size="lg" showSubtitle={true} showBadge={false} />
-            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed max-w-sm pt-2">
+            <p className="text-sm sm:text-base text-slate-400 leading-relaxed max-w-sm pt-2">
               Manufacturer, Importer & Exporter of Table Tennis Products. Providing tournament-grade equipment to champions, national academies, and schools across India since 2021.
             </p>
 
@@ -51,7 +51,7 @@ export const Footer: React.FC<FooterProps> = ({
             <h4 className="font-display text-base sm:text-lg font-bold text-white uppercase tracking-wider">
               Quick Navigation
             </h4>
-            <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
+            <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-base">
               <li>
                 <button
                   onClick={() => {
@@ -115,7 +115,7 @@ export const Footer: React.FC<FooterProps> = ({
             <h4 className="font-display text-base sm:text-lg font-bold text-white uppercase tracking-wider">
               Useful Links
             </h4>
-            <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm">
+            <ul className="space-y-1.5 sm:space-y-2 text-sm sm:text-base">
               <li>
                 <button
                   onClick={() => onOpenPolicy('privacy')}
@@ -199,7 +199,7 @@ export const Footer: React.FC<FooterProps> = ({
 
         {/* Bottom Copyright */}
         <div className="mt-10 sm:mt-12 pt-6 border-t border-white/[0.06] flex items-center justify-center text-center text-[11px] sm:text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} Grace Sports. All Rights Reserved. India's Table Tennis Equipment Manufacturer.</p>
+          <p>© {new Date().getFullYear()} Grace Sport. All Rights Reserved. India's Table Tennis Equipment Manufacturer.</p>
         </div>
       </div>
     </footer>

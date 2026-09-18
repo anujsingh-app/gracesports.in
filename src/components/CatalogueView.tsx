@@ -81,9 +81,9 @@ export const CatalogueView: React.FC<CatalogueViewProps> = ({
                 <span>DIRECT FACTORY CATALOGUE • NO ONLINE CART REQUIRED</span>
               </div>
               <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white uppercase tracking-tight">
-                Grace Sports Catalogue
+                Grace Sport Catalogue
               </h1>
-              <p className="text-slate-400 text-xs sm:text-sm max-w-xl mt-1">
+              <p className="text-slate-400 text-sm sm:text-base max-w-xl mt-1">
                 Select products for individual WhatsApp orders or compile multiple items into your official quotation list.
               </p>
             </div>
@@ -100,7 +100,7 @@ export const CatalogueView: React.FC<CatalogueViewProps> = ({
               </a>
 
               <a
-                href={createGeneralWhatsAppUrl("Hello Grace Sports, I would like to request your complete dealer/academy wholesale price list.")}
+                href={createGeneralWhatsAppUrl("Hello Grace Sport, I would like to request your complete dealer/academy wholesale price list.")}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#CB2522] to-[#b01e1b] hover:from-[#d82d29] hover:to-[#CB2522] text-white text-xs font-bold shadow-[0_0_15px_rgba(203,37,34,0.35)] transition-all min-h-[44px] text-center"

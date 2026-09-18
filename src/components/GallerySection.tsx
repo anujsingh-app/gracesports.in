@@ -72,9 +72,9 @@ export const GallerySection: React.FC = () => {
         <FadeIn direction="up" distance={20}>
           <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 space-y-2">
             <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase tracking-tight">
-              Grace Sports in Action
+              Grace Sport in Action
             </h2>
-            <p className="text-slate-400 text-xs sm:text-sm">
+            <p className="text-slate-400 text-sm sm:text-base">
               Explore our collection of {GALLERY_ITEMS.length} high-performance tournament tables, competition balls, and arena equipment.
             </p>
           </div>

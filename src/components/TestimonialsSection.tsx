@@ -79,7 +79,7 @@ export const TestimonialsSection: React.FC = () => {
               <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase tracking-tight leading-tight">
                 Trusted by India's Top TT Coaches
               </h2>
-              <p className="text-slate-400 text-xs sm:text-sm mt-1 max-w-xl">
+              <p className="text-slate-400 text-sm sm:text-base mt-1 max-w-xl">
                 Real feedback from professional academy founders and national level coaches training the next generation.
               </p>
             </div>

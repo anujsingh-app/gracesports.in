@@ -86,7 +86,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
     if (navigator.share) {
       navigator.share({
         title: shareName,
-        text: `${shareName} - ₹${currentPrice} | Grace Sports Table Tennis`,
+        text: `${shareName} - ₹${currentPrice} | Grace Sport Table Tennis`,
         url: window.location.href,
       }).catch(() => {});
     } else {
@@ -387,7 +387,7 @@ export const ProductModal: React.FC<ProductModalProps> = ({
 
                 {product.description && (
                   <div className="mt-4 p-4 rounded-xl bg-white/[0.02] border border-white/[0.06]">
-                    <p className="text-slate-200 text-xs sm:text-sm leading-relaxed whitespace-pre-line font-medium">
+                    <p className="text-slate-200 text-sm sm:text-base leading-relaxed whitespace-pre-line font-medium">
                       {product.description}
                     </p>
                   </div>

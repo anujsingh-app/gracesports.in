@@ -18,7 +18,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({ size = 'md', showSubtitle 
       } rounded-xl bg-white shadow-[0_0_20px_rgba(229,32,44,0.25)] border border-white/20 overflow-hidden`}>
         <img
           src="/images/gslogo/logo.webp"
-          alt="Grace Sports Logo"
+          alt="Grace Sport Logo"
           width={48}
           height={48}
           className="w-full h-full object-contain"
@@ -31,7 +31,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({ size = 'md', showSubtitle 
             isSmall ? 'text-base sm:text-xl' : isLarge ? 'text-2xl sm:text-3xl' : 'text-xl sm:text-2xl'
           } whitespace-nowrap leading-none`}>
             <span style={{ color: '#CB2522' }} className="text-[#CB2522]">GRACE</span>{' '}
-            <span style={{ color: '#FFFFFF' }} className="text-white">SPORTS</span>
+            <span style={{ color: '#FFFFFF' }} className="text-white">SPORT</span>
           </span>
         </div>
 

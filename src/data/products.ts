@@ -5,7 +5,7 @@ export const CATEGORIES: Category[] = [
     id: 'tables',
     name: 'Tables',
     iconName: 'Table',
-    image: '/images/categories/grace sports table.webp',
+    image: '/images/categories/Grace Sport table.webp',
     description: 'ITTF standard competition, academy & club foldable tables'
   },
   {
@@ -156,7 +156,7 @@ export const PRODUCTS: Product[] = [
     image: '/images/products/balls/THREE STAR GOLD 40+.webp',
     galleryImages: [],
     shortDescription: '⭐⭐⭐ Star Ball, Abs 40+ with seam, Pack of 144 Balls',
-    description: '⭐⭐⭐  Star Ball\nAbs 40+ with seam\nBrand – Grace Sports\nMaterial – Plastic, ABS\nColour – White\nCreates a stable bounce & excellent spin\nOptimum roundness & hardness\nHigh Performance Table Tennis Balls\nPack of 144 Balls',
+    description: '⭐⭐⭐  Star Ball\nAbs 40+ with seam\nBrand – Grace Sport\nMaterial – Plastic, ABS\nColour – White\nCreates a stable bounce & excellent spin\nOptimum roundness & hardness\nHigh Performance Table Tennis Balls\nPack of 144 Balls',
     specifications: []
   },
   {
@@ -171,7 +171,7 @@ export const PRODUCTS: Product[] = [
     image: '/images/products/balls/TWO STAR UNIQUE 40+.webp',
     galleryImages: [],
     shortDescription: '⭐⭐ Star Ball, Abs 40+ with seam, Pack of 144 Balls',
-    description: '⭐⭐ Star Ball\nAbs 40+ with seam\nBrand – Grace Sports\nMaterial – Plastic, ABS\nColour – White\nCreates a stable bounce & excellent spin\nOptimum roundness & hardness\nHigh Performance Table Tennis Balls\nPack of 144 Balls',
+    description: '⭐⭐ Star Ball\nAbs 40+ with seam\nBrand – Grace Sport\nMaterial – Plastic, ABS\nColour – White\nCreates a stable bounce & excellent spin\nOptimum roundness & hardness\nHigh Performance Table Tennis Balls\nPack of 144 Balls',
     specifications: []
   },
   {
@@ -186,7 +186,7 @@ export const PRODUCTS: Product[] = [
     image: '/images/products/balls/ONE STAR PRACTICE 40+.webp',
     galleryImages: [],
     shortDescription: '⭐ Star Ball, Abs 40+ with seam, Pack of 144 Ball',
-    description: '⭐ Star Ball\nAbs 40+ with seam\nBrand – Grace Sports\nMaterial – Plastic, ABS\nColour – White\nCreates a stable bounce & excellent spin\nOptimum roundness & hardness\nHigh Performance Table Tennis Balls\nPack of 144 Ball',
+    description: '⭐ Star Ball\nAbs 40+ with seam\nBrand – Grace Sport\nMaterial – Plastic, ABS\nColour – White\nCreates a stable bounce & excellent spin\nOptimum roundness & hardness\nHigh Performance Table Tennis Balls\nPack of 144 Ball',
     specifications: []
   },
   {
@@ -201,8 +201,8 @@ export const PRODUCTS: Product[] = [
     featured: true,
     image: '/images/products/Accessories/GS PORTABLE BALL CATCHER NET.webp',
     galleryImages: [],
-    shortDescription: 'Brand : Grace Sports, Easy to install, No miss the ball',
-    description: 'Brand : Grace Sports\nEasy to install\nNo miss the ball, save time\nSide length extension\nVelcro design\nHigh quality gauze',
+    shortDescription: 'Brand : Grace Sport, Easy to install, No miss the ball',
+    description: 'Brand : Grace Sport\nEasy to install\nNo miss the ball, save time\nSide length extension\nVelcro design\nHigh quality gauze',
     specifications: []
   },
   {
@@ -216,8 +216,8 @@ export const PRODUCTS: Product[] = [
     inStock: true,
     image: '/images/products/Accessories/GS RETURNBOARD.webp',
     galleryImages: [],
-    shortDescription: 'Brand : Grace Sports, Top Size: 1525*48 mm, All Angle Adjustable',
-    description: 'Brand : Grace Sports\nTop Size: 1525*48 mm\nTop Thikness: 15mm Ply Non Rubber\nFrame Size: 25 mm Round\nLeg Size: 75 to 150 cms\nAll Angle Adjustable',
+    shortDescription: 'Brand : Grace Sport, Top Size: 1525*48 mm, All Angle Adjustable',
+    description: 'Brand : Grace Sport\nTop Size: 1525*48 mm\nTop Thikness: 15mm Ply Non Rubber\nFrame Size: 25 mm Round\nLeg Size: 75 to 150 cms\nAll Angle Adjustable',
     specifications: []
   },
   {
@@ -231,8 +231,8 @@ export const PRODUCTS: Product[] = [
     inStock: true,
     image: '/images/products/Accessories/gs stee; balls holder.webp',
     galleryImages: [],
-    shortDescription: 'Brand : Grace Sports, Full body stainless steel',
-    description: 'Brand : Grace Sports\nStable and durable table tennis collector\nwith full body stainless steel\nHeight Adjustable\nEquipped with four universal wheels made\nof rubber for easy movement and floor\nprotection',
+    shortDescription: 'Brand : Grace Sport, Full body stainless steel',
+    description: 'Brand : Grace Sport\nStable and durable table tennis collector\nwith full body stainless steel\nHeight Adjustable\nEquipped with four universal wheels made\nof rubber for easy movement and floor\nprotection',
     specifications: []
   },
   {
@@ -246,8 +246,8 @@ export const PRODUCTS: Product[] = [
     inStock: true,
     image: '/images/products/Accessories/GS BALLS HOLDER.webp',
     galleryImages: [],
-    shortDescription: 'Brand : Grace Sports, Stable and durable table tennis collector',
-    description: 'Brand : Grace Sports\nStable and durable table tennis collector\nwith stainless steel bracket and mesh\nbasket\nHeight Adjustable\nEquipped with three universal wheels made\nof rubber for easy movement and floor\nprotection',
+    shortDescription: 'Brand : Grace Sport, Stable and durable table tennis collector',
+    description: 'Brand : Grace Sport\nStable and durable table tennis collector\nwith stainless steel bracket and mesh\nbasket\nHeight Adjustable\nEquipped with three universal wheels made\nof rubber for easy movement and floor\nprotection',
     specifications: []
   },
   {
@@ -262,8 +262,8 @@ export const PRODUCTS: Product[] = [
     isPopular: true,
     image: '/images/products/Accessories/gs ball picker.webp',
     galleryImages: [],
-    shortDescription: 'Brand : Grace Sports, Material: Net cloth, Stainless steel',
-    description: 'Brand : Grace Sports\nMaterial: Net cloth, Stainless steel\nPacking Size: 94×22.5x23cm\nThe premium Ping-Pong ball retriever\nfeatures a durable rod body and a\nconvenient pick-up net bag for long-term\nuse, ensuring quick and easy ball retrieval.',
+    shortDescription: 'Brand : Grace Sport, Material: Net cloth, Stainless steel',
+    description: 'Brand : Grace Sport\nMaterial: Net cloth, Stainless steel\nPacking Size: 94×22.5x23cm\nThe premium Ping-Pong ball retriever\nfeatures a durable rod body and a\nconvenient pick-up net bag for long-term\nuse, ensuring quick and easy ball retrieval.',
     specifications: []
   },
   {

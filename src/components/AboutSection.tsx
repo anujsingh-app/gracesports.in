@@ -31,10 +31,10 @@ export const AboutSection: React.FC = () => {
             <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white uppercase leading-tight">
               Discover Story About How <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-white">
-                Grace Sports Started
+                Grace Sport Started
               </span>
             </h2>
-            <p className="text-slate-400 text-xs sm:text-sm max-w-xl mx-auto">
+            <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">
               We love what we do: crafting high-performance table tennis gear that fuels passion, precision, and play.
             </p>
           </div>
@@ -83,26 +83,26 @@ export const AboutSection: React.FC = () => {
                     <h3 className="font-display text-2xl sm:text-4xl font-extrabold text-white uppercase tracking-tight">
                       Vardhan Mashi
                     </h3>
-                    <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                    <span className="text-sm font-semibold text-slate-400 uppercase tracking-wider">
                       Founder & CEO of Grace Sport
                     </span>
                   </div>
 
-                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                    Grace sports was founded in the year <strong>2021</strong> and is being run under the auspices of a professional team. The founder-Director, <strong>Vardhan Mashi</strong>, has the spirit and the live force behind the sports project. He is an efficient visioner. Grace Sports has consistently strived to symbolize the true spirit of dedication to maintaining a high standard of sports.
+                  <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                    Grace Sport was founded in the year <strong>2021</strong> and is being run under the auspices of a professional team. The founder-Director, <strong>Vardhan Mashi</strong>, has the spirit and the live force behind the sports project. He is an efficient visioner. Grace Sport has consistently strived to symbolize the true spirit of dedication to maintaining a high standard of sports.
                   </p>
 
-                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                    The primary objective of Grace Sports is to focus on grassroots players and ensure that they have access to high-quality sports products. Understanding the financial constraints that many aspiring athletes face, Grace Sports aims to provide the products that are comparable in quality to those used by professional athletes, but at more affordable prices.
+                  <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                    The primary objective of Grace Sport is to focus on grassroots players and ensure that they have access to high-quality sports products. Understanding the financial constraints that many aspiring athletes face, Grace Sport aims to provide the products that are comparable in quality to those used by professional athletes, but at more affordable prices.
                   </p>
 
                   {/* Founder's Motto Quote Card */}
                   <div className="p-3.5 sm:p-4 rounded-2xl bg-red-950/20 border border-red-500/25 relative backdrop-blur-xl">
                     <Quote className="w-5 h-5 sm:w-6 sm:h-6 text-red-400/40 absolute top-3 right-3" />
-                    <p className="text-xs sm:text-sm text-red-100 italic leading-relaxed pr-6">
+                    <p className="text-sm sm:text-base text-red-100 italic leading-relaxed pr-6">
                       "If you plan for a year, you should sow rice; if you plan for a decade, you should plant trees; and if you plan for a lifetime of fitness, you should educate people through sports."
                     </p>
-                    <span className="text-[10px] sm:text-[11px] text-red-400 font-bold block mt-2">
+                    <span className="text-xs sm:text-sm text-red-400 font-bold block mt-2">
                       — Vardhan Mashi, Founder's Message
                     </span>
                   </div>
@@ -134,7 +134,7 @@ export const AboutSection: React.FC = () => {
               <h4 className="font-display text-xl font-bold text-white uppercase tracking-wide">
                 We Love What We Do
               </h4>
-              <p className="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">
+              <p className="text-slate-400 text-sm sm:text-base mt-2 leading-relaxed">
                 Crafting high-performance table tennis gear that fuels passion, precision, and play. From beginners to pros, we're here to support every rally, every spin, and every win.
               </p>
             </div>
@@ -148,7 +148,7 @@ export const AboutSection: React.FC = () => {
               <h4 className="font-display text-xl font-bold text-white uppercase tracking-wide">
                 Our Working Process
               </h4>
-              <p className="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">
+              <p className="text-slate-400 text-sm sm:text-base mt-2 leading-relaxed">
                 Driven by passion, perfected with precision. From design to delivery, we ensure every product meets the highest standards for performance and durability.
               </p>
             </div>
@@ -162,8 +162,8 @@ export const AboutSection: React.FC = () => {
               <h4 className="font-display text-xl font-bold text-white uppercase tracking-wide">
                 Our Vision
               </h4>
-              <p className="text-slate-400 text-xs sm:text-sm mt-2 leading-relaxed">
-                At Grace Sports, our vision is to create a society where sports and physical fitness are embraced as essential components of a well-rounded life, with accessible quality equipment for all.
+              <p className="text-slate-400 text-sm sm:text-base mt-2 leading-relaxed">
+                At Grace Sport, our vision is to create a society where sports and physical fitness are embraced as essential components of a well-rounded life, with accessible quality equipment for all.
               </p>
             </div>
           </FadeIn>
@@ -211,7 +211,7 @@ export const AboutSection: React.FC = () => {
                   <div className="rounded-2xl overflow-hidden border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.4)] relative">
                     <img
                       src="/images/about gs/vd.webp"
-                      alt="Vardhan Mashi, Founder & CEO of Grace Sports"
+                      alt="Vardhan Mashi, Founder & CEO of Grace Sport"
                       width={672}
                       height={378}
                       loading="lazy"
@@ -233,14 +233,14 @@ export const AboutSection: React.FC = () => {
 
                 {/* Message Content & Quote */}
                 <div className="max-w-3xl mx-auto space-y-4">
-                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                    Vardhan Mashi, Founder of Grace sports is an able administrator of vision and initiative; It firmly believe in the power of sports as a transformative tool. We follow the adage that if you plan for a year, you should sow rice; if you plan for a decade, you should plant trees; and if you plan for a lifetime of fitness, you should educate people through sports.
+                  <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                    Vardhan Mashi, Founder of Grace Sport is an able administrator of vision and initiative; It firmly believe in the power of sports as a transformative tool. We follow the adage that if you plan for a year, you should sow rice; if you plan for a decade, you should plant trees; and if you plan for a lifetime of fitness, you should educate people through sports.
                   </p>
-                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                  <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
                     This quote encapsulates our commitment to promoting lifelong fitness and well-being through sports. We recognize that sports have a profound impact on individuals, particularly during their formative years. Through our initiatives, we strive to shape individuals into well-rounded individuals with dynamic personalities.
                   </p>
-                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                    In addition to promoting sports, we believe sports equipment plays important role in the sports industry. Grace Sports also aims to provide high-quality sports products at affordable prices. We understand the importance of having access to reliable and durable sports equipment, and we are dedicated to ensuring that individuals can engage in sports without any financial barriers.
+                  <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                    In addition to promoting sports, we believe sports equipment plays important role in the sports industry. Grace Sport also aims to provide high-quality sports products at affordable prices. We understand the importance of having access to reliable and durable sports equipment, and we are dedicated to ensuring that individuals can engage in sports without any financial barriers.
                   </p>
 
                   {/* Signature quote */}
@@ -251,10 +251,10 @@ export const AboutSection: React.FC = () => {
                     }}
                   >
                     <Quote className="w-5 h-5 sm:w-6 sm:h-6 text-red-400/40 absolute top-3 right-3" />
-                    <p className="text-xs sm:text-sm text-red-100 italic leading-relaxed pr-6">
+                    <p className="text-sm sm:text-base text-red-100 italic leading-relaxed pr-6">
                       "Educate people through sports — that is the foundation of a truly fit nation."
                     </p>
-                    <span className="text-[10px] sm:text-[11px] text-red-400 font-bold block mt-2">
+                    <span className="text-xs sm:text-sm text-red-400 font-bold block mt-2">
                       — Vardhan Mashi, Founder & CEO
                     </span>
                   </div>
@@ -303,7 +303,7 @@ export const AboutSection: React.FC = () => {
                   <div className="rounded-2xl overflow-hidden border border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.4)] relative">
                     <img
                       src="/images/about gs/vd-1.webp"
-                      alt="Grace Sports Vision and Presence"
+                      alt="Grace Sport Vision and Presence"
                       width={672}
                       height={378}
                       loading="lazy"
@@ -325,13 +325,13 @@ export const AboutSection: React.FC = () => {
 
                 {/* Vision Content */}
                 <div className="max-w-3xl mx-auto space-y-4">
-                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                    At Grace Sports, our vision is to create a society where sports and physical fitness are embraced and valued as essential components of a well-rounded life. We envision a world where individuals of all ages and backgrounds have access to quality sports equipment at affordable prices.
+                  <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                    At Grace Sport, our vision is to create a society where sports and physical fitness are embraced and valued as essential components of a well-rounded life. We envision a world where individuals of all ages and backgrounds have access to quality sports equipment at affordable prices.
                   </p>
-                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                  <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
                     We aim to break down barriers and create opportunities for individuals from all walks of life to participate in and benefit from sports. As part of our vision, we strive to provide high-quality sports products that are accessible and affordable to individuals across different socioeconomic backgrounds.
                   </p>
-                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                  <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
                     We believe that everyone should have the opportunity to engage in sports and enjoy the associated benefits, regardless of their financial resources. In pursuit of our vision, we are committed to continuous innovation, collaboration with like-minded partners, and making a positive impact on the sporting landscape of India.
                   </p>
                 </div>

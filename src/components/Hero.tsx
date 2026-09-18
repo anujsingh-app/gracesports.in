@@ -89,11 +89,11 @@ export const Hero: React.FC<HeroProps> = ({
   const heroSlides = [
     {
       badge: 'INDIA FASTEST GROWING',
-      title: 'Welcome To Grace Sports',
+      title: 'Welcome To Grace Sport',
       highlight: "India's Own Table Tennis Brand",
       tagline: 'Manufacturer Importer & Exporter of Table Tennis Products',
       image: '/images/hero/X.webp',
-      pillText: 'DIRECT FACTORY DISPATCH',
+      pillText: 'TABLE TENNIS BRAND',
       spec: 'TABLE TENNIS BRAND'
     },
 
@@ -101,7 +101,7 @@ export const Hero: React.FC<HeroProps> = ({
       badge: 'NATIONAL RECOGNITION',
       title: 'Founder & CEO with Legend',
       highlight: 'Sharath Kamal',
-      tagline: "India's Table Tennis Icon in Grace Sports Apparel",
+      tagline: "India's Table Tennis Icon in Grace Sport Apparel",
       image: '/images/hero/hero-sarathkamal.webp',
       pillText: 'SHARATH KAMAL APPROVED',
       spec: 'Pro Academy Gear'
@@ -112,7 +112,7 @@ export const Hero: React.FC<HeroProps> = ({
       highlight: 'Championship Series',
       tagline: 'International Standards',
       image: '/images/hero/hero-1.webp',
-      pillText: 'PRO SERIES × GRACE SPORTS',
+      pillText: 'TTFI APPROVED',
       spec: '25mm Glare-Proof Surface'
     },
 
@@ -171,7 +171,7 @@ export const Hero: React.FC<HeroProps> = ({
             <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2.5 sm:gap-3 pt-2 w-full sm:w-auto">
               <button
                 onClick={onExploreCatalogue}
-                className="flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#CB2522] to-[#b01e1b] hover:from-[#d82d29] hover:to-[#CB2522] text-white font-bold text-xs sm:text-sm shadow-[0_0_25px_rgba(203,37,34,0.4)] transition-all transform active:scale-95 min-h-[48px] text-center"
+                className="flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#CB2522] to-[#b01e1b] hover:from-[#d82d29] hover:to-[#CB2522] text-white font-bold text-sm sm:text-base shadow-[0_0_25px_rgba(203,37,34,0.4)] transition-all transform active:scale-95 min-h-[48px] text-center"
               >
                 <span>View Products</span>
                 <ChevronRight className="w-4 h-4 shrink-0" />
@@ -181,7 +181,7 @@ export const Hero: React.FC<HeroProps> = ({
                 href={createGeneralWhatsAppUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-3.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-white border border-white/10 hover:border-red-500/40 font-semibold text-xs sm:text-sm backdrop-blur-xl transition-all shadow-lg cursor-pointer min-h-[48px] text-center"
+                className="flex items-center justify-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-3.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-white border border-white/10 hover:border-red-500/40 font-semibold text-sm sm:text-base backdrop-blur-xl transition-all shadow-lg cursor-pointer min-h-[48px] text-center"
               >
                 <MessageCircle className="w-4 h-4 text-emerald-400 fill-emerald-500/20 shrink-0" />
                 <span>WhatsApp Order</span>

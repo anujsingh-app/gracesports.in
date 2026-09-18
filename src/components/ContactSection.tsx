@@ -25,7 +25,7 @@ export const ContactSection: React.FC = () => {
             <h2 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white uppercase tracking-tight leading-tight">
               Don't Hesitate to Contact With Us
             </h2>
-            <p className="text-slate-400 text-xs sm:text-sm">
+            <p className="text-slate-400 text-sm sm:text-base">
               To empower every table tennis enthusiast with top-quality equipment. We're here to answer every equipment question, bulk quote, and academy setup.
             </p>
           </div>
@@ -45,7 +45,7 @@ export const ContactSection: React.FC = () => {
                     <h4 className="font-display text-lg sm:text-xl font-bold text-white uppercase tracking-wide">
                       Office Location
                     </h4>
-                    <p className="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
+                    <p className="text-sm sm:text-base text-slate-300 mt-1 leading-relaxed">
                       {FACTORY_ADDRESS}
                     </p>
                     <span className="text-[10px] sm:text-[11px] text-red-400 font-semibold block mt-1.5 sm:mt-2">
@@ -148,7 +148,7 @@ export const ContactSection: React.FC = () => {
                       </a>
                     </div>
                     <h3 className="font-display text-xl sm:text-3xl font-bold text-white uppercase">
-                      Visit Grace Sports
+                      Visit Grace Sport
                     </h3>
                     <p className="text-xs text-slate-400 mt-1">
                       Direct factory inspections, tournament table viewings, and bulk academy pickups in Meerut.
@@ -163,7 +163,7 @@ export const ContactSection: React.FC = () => {
                       allowFullScreen
                       loading="lazy"
                       referrerPolicy="strict-origin-when-cross-origin"
-                      title="Grace Sports Google Map Location"
+                      title="Grace Sport Google Map Location"
                     />
                   </div>
                 </div>

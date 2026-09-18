@@ -48,7 +48,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({ policy, onClose }) => 
                 {policy === 'terms' && 'Terms & Conditions'}
               </h3>
               <span className="text-xs text-slate-400">
-                Official Grace Sports Legal Documentation
+                Official Grace Sport Legal Documentation
               </span>
             </div>
           </div>
@@ -64,23 +64,23 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({ policy, onClose }) => 
         </div>
 
         {/* Content */}
-        <div className="p-6 sm:p-8 overflow-y-auto overscroll-contain space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
+        <div className="p-6 sm:p-8 overflow-y-auto overscroll-contain space-y-4 text-sm sm:text-base text-slate-300 leading-relaxed">
           {policy === 'terms' && (
             <>
               <p className="font-semibold text-white">
-                Effective Date: 1 May 2025 | Grace Sports Table Tennis
+                Effective Date: 1 May 2025 | Grace Sport Table Tennis
               </p>
               <h4 className="text-white font-bold text-base mt-4">1. Acceptance of Terms</h4>
               <p>
-                By accessing Grace Sports' catalogue, inquiring about products, or placing offline purchase orders via WhatsApp or telephone, you confirm your acceptance of these Terms and Conditions.
+                By accessing Grace Sport's catalogue, inquiring about products, or placing offline purchase orders via WhatsApp or telephone, you confirm your acceptance of these Terms and Conditions.
               </p>
               <h4 className="text-white font-bold text-base mt-4">2. Product Orders & Dispatches</h4>
               <p>
-                All orders are subject to stock availability and manufacturing schedules. Grace Sports provides direct factory quotes. Due to fluctuating freight charges on heavy table tennis tables (120kg+), final delivered invoices include negotiated carrier logistics.
+                All orders are subject to stock availability and manufacturing schedules. Grace Sport provides direct factory quotes. Due to fluctuating freight charges on heavy table tennis tables (120kg+), final delivered invoices include negotiated carrier logistics.
               </p>
               <h4 className="text-white font-bold text-base mt-4">3. Intellectual Property</h4>
               <p>
-                All brand marks, product certifications, photographs, and table model trademarks ("Sonic Pro", "Sonic X", "Grace Sport GS") are proprietary to Grace Sports Meerut.
+                All brand marks, product certifications, photographs, and table model trademarks ("Sonic Pro", "Sonic X", "Grace Sport GS") are proprietary to Grace Sport Meerut.
               </p>
               <h4 className="text-white font-bold text-base mt-4">4. Governing Law</h4>
               <p>
@@ -92,15 +92,15 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({ policy, onClose }) => 
           {policy === 'refund' && (
             <>
               <p className="font-semibold text-white">
-                Effective Date: 1 May 2025 | Grace Sports Table Tennis
+                Effective Date: 1 May 2025 | Grace Sport Table Tennis
               </p>
               <h4 className="text-white font-bold text-base mt-4">1. Returns & Exchanges Eligibility</h4>
               <p>
-                Grace Sports inspects all table tennis tables, tournament nets, and 40+ ABS balls prior to wooden-crate packaging. In the unlikely event of transit damage, clients must report within 7 days of receiving the consignment with photos/videos to {OFFICIAL_EMAIL} or via WhatsApp.
+                Grace Sport inspects all table tennis tables, tournament nets, and 40+ ABS balls prior to wooden-crate packaging. In the unlikely event of transit damage, clients must report within 7 days of receiving the consignment with photos/videos to {OFFICIAL_EMAIL} or via WhatsApp.
               </p>
               <h4 className="text-white font-bold text-base mt-4">2. Transit Damage & Replacement</h4>
               <p>
-                For defective or transit-damaged items, Grace Sports will arrange immediate replacement components (table wings, wheel assemblies, net clamps) at zero extra cost.
+                For defective or transit-damaged items, Grace Sport will arrange immediate replacement components (table wings, wheel assemblies, net clamps) at zero extra cost.
               </p>
               <h4 className="text-white font-bold text-base mt-4">3. Return Address</h4>
               <p>
@@ -113,7 +113,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({ policy, onClose }) => 
           {policy === 'privacy' && (
             <>
               <p className="font-semibold text-white">
-                Effective Date: 1 May 2025 | Grace Sports Table Tennis
+                Effective Date: 1 May 2025 | Grace Sport Table Tennis
               </p>
               <h4 className="text-white font-bold text-base mt-4">1. Information We Collect</h4>
               <p>
@@ -121,7 +121,7 @@ export const PolicyModal: React.FC<PolicyModalProps> = ({ policy, onClose }) => 
               </p>
               <h4 className="text-white font-bold text-base mt-4">2. No Payment Card Storage</h4>
               <p>
-                Grace Sports does not store credit card or bank credentials on this web portal, as all transactions occur via direct offline invoicing and authorized banking rails.
+                Grace Sport does not store credit card or bank credentials on this web portal, as all transactions occur via direct offline invoicing and authorized banking rails.
               </p>
               <h4 className="text-white font-bold text-base mt-4">3. Contact</h4>
               <p>
