@@ -238,7 +238,7 @@ export const Header: React.FC<HeaderProps> = ({
                               <img
                                 src={product.image}
                                 alt={product.name}
-                                className="w-10 h-10 rounded-lg object-cover bg-black/40 border border-white/10 shrink-0"
+                                className="w-10 h-10 rounded-lg object-contain p-0.5 bg-black/40 border border-white/10 shrink-0"
                               />
                               <div className="min-w-0 flex-1">
                                 <div className="flex items-center gap-1.5">

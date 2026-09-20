@@ -54,7 +54,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           }
         }}
         onClick={() => onSelect(product)}
-        className="relative aspect-[4/3] w-full overflow-hidden bg-black/40 cursor-pointer"
+        className="relative aspect-[4/3] w-full overflow-hidden bg-black/40 cursor-pointer flex items-center justify-center p-3 sm:p-4"
       >
         {/* Shimmer Skeleton Placeholder during image asset loading */}
         {!imageLoaded && (
@@ -69,22 +69,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           width={400}
           height={300}
           onLoad={() => setImageLoaded(true)}
-          className={`w-full h-full object-cover object-center hover-scale-img ${
+          className={`w-full h-full object-contain object-center hover-scale-img ${
             imageLoaded ? 'opacity-100' : 'opacity-0'
           }`}
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#090C13] via-transparent to-black/30 pointer-events-none" />
 
         {/* Category Tag on top right */}
-        <div className="absolute top-2.5 sm:top-3 right-2.5 sm:right-3 pointer-events-none">
+        <div className="absolute top-2.5 sm:top-3 right-2.5 sm:right-3 pointer-events-none z-10">
           <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[9px] sm:text-[10px] font-bold uppercase tracking-wider bg-black/60 text-slate-300 border border-white/10 backdrop-blur-md">
             {product.category}
           </span>
         </div>
 
         {/* Quick View Button on Image Hover (desktop) */}
-        <div className="absolute inset-0 hidden sm:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-[2px]">
+        <div className="absolute inset-0 hidden sm:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-[2px] z-10">
           <button
             onClick={(e) => {
               e.stopPropagation();

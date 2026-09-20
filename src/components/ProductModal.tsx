@@ -189,13 +189,12 @@ export const ProductModal: React.FC<ProductModalProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8">
             {/* Left: Product Media Gallery */}
             <div className="md:col-span-6 space-y-3.5">
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-black/60 border border-white/[0.08]">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-black/60 border border-white/[0.08] flex items-center justify-center p-4 sm:p-6">
                 <img
                   src={currentImage}
                   alt={product.name}
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-full object-contain object-center"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 
                 {/* Mobile chevrons over image for fast switching */}
                 {onPrevProduct && (
@@ -229,21 +228,21 @@ export const ProductModal: React.FC<ProductModalProps> = ({
                 <div className="flex gap-2 overflow-x-auto no-scrollbar pb-1">
                   <button
                     onClick={() => setActiveImage(product.image)}
-                    className={`relative w-16 h-14 sm:w-20 sm:h-16 rounded-xl overflow-hidden border transition-all shrink-0 ${
+                    className={`relative w-16 h-14 sm:w-20 sm:h-16 rounded-xl overflow-hidden border transition-all shrink-0 bg-black/40 p-1 flex items-center justify-center ${
                       currentImage === product.image ? 'border-red-500 scale-105' : 'border-white/10 opacity-70'
                     }`}
                   >
-                    <img src={product.image} alt={`${product.name} primary photo`} className="w-full h-full object-cover" />
+                    <img src={product.image} alt={`${product.name} primary photo`} className="w-full h-full object-contain" />
                   </button>
                   {product.galleryImages.map((img, i) => (
                     <button
                       key={i}
                       onClick={() => setActiveImage(img)}
-                      className={`relative w-16 h-14 sm:w-20 sm:h-16 rounded-xl overflow-hidden border transition-all shrink-0 ${
+                      className={`relative w-16 h-14 sm:w-20 sm:h-16 rounded-xl overflow-hidden border transition-all shrink-0 bg-black/40 p-1 flex items-center justify-center ${
                         currentImage === img ? 'border-red-500 scale-105' : 'border-white/10 opacity-70'
                       }`}
                     >
-                      <img src={img} alt={`${product.name} view ${i + 1}`} className="w-full h-full object-cover" />
+                      <img src={img} alt={`${product.name} view ${i + 1}`} className="w-full h-full object-contain" />
                     </button>
                   ))}
                 </div>

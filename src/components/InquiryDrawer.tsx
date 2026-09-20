@@ -127,7 +127,7 @@ export const InquiryDrawer: React.FC<InquiryDrawerProps> = ({
                     <img
                       src={item.product.image}
                       alt={item.product.name}
-                      className="w-16 h-16 rounded-xl object-cover bg-black/40 border border-white/[0.05] shrink-0"
+                      className="w-16 h-16 rounded-xl object-contain p-1 bg-black/40 border border-white/[0.05] shrink-0"
                     />
 
                     <div className="flex-1 min-w-0">
