@@ -76,7 +76,7 @@ export const CatalogueView: React.FC<CatalogueViewProps> = ({
         <FadeIn direction="up" distance={20}>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 sm:gap-6 pb-6 sm:pb-8 border-b border-white/[0.08]">
             <div>
-              <div className="inline-flex flex-wrap items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-red-600/20 border border-red-500/30 text-[10px] sm:text-xs font-semibold text-red-400 uppercase tracking-wider mb-2 max-w-full">
+              <div className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-red-600/20 border border-red-500/30 text-[8.5px] min-[380px]:text-[10px] sm:text-xs font-semibold text-red-400 uppercase tracking-tight sm:tracking-wider mb-2 max-w-full whitespace-nowrap">
                 <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
                 <span>DIRECT FACTORY CATALOGUE • NO ONLINE CART REQUIRED</span>
               </div>

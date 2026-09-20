@@ -142,14 +142,14 @@ export const Hero: React.FC<HeroProps> = ({
           {/* Left Column */}
           <div className="lg:col-span-7 flex flex-col items-start space-y-4 sm:space-y-5">
             {/* Top Badge */}
-            <div className="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-red-500/30 backdrop-blur-xl max-w-full">
+            <div className="inline-flex items-center gap-1 sm:gap-2 px-2.5 sm:px-3 py-1 rounded-full bg-white/[0.04] border border-red-500/30 backdrop-blur-xl max-w-full whitespace-nowrap">
               <span className="flex h-2 w-2 rounded-full bg-red-500 animate-pulse shrink-0" />
               <ShieldCheck className="w-3.5 h-3.5 text-red-400 shrink-0" />
-              <span className="text-[10px] sm:text-[11px] font-bold tracking-wider text-slate-200 uppercase">
+              <span className="text-[9px] min-[370px]:text-[10px] sm:text-[11px] font-bold tracking-wider text-slate-200 uppercase">
                 {slide.badge}
               </span>
               <span className="text-white/20">•</span>
-              <span className="text-[10px] sm:text-[11px] font-bold text-red-400">
+              <span className="text-[9px] min-[370px]:text-[10px] sm:text-[11px] font-bold text-red-400">
                 {slide.pillText}
               </span>
             </div>
